@@ -3,28 +3,28 @@ import { Container, Row, Col } from 'reactstrap';
 const Service = () => {
   const services = [
     {
-      title: 'Lorem Ipsum',
-      desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+      title: 'Diseño Gráfico',
+      desc: '"Todo está diseñado. Pocas cosas están bien diseñadas". Plasmamos tus ideas',
     },
     {
-      title: 'Lorem Ipsum',
-      desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+      title: 'Impresión de Lonas Industriales',
+      desc: 'Lonas full color, todo tamaño. ',
     },
     {
-      title: 'Lorem Ipsum',
-      desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+      title: 'Estampados de Camisetas',
+      desc: '6 tipos de diferentes de telas, 4 técnicas distintas de estampados, aplicamos la que mejor se ajuste a tus necesidades.',
     },
     {
-      title: 'Lorem Ipsum',
-      desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+      title: 'Estampados de Tasas',
+      desc: 'Ideal para recuerdos, regalos, todo tipo de Diseño.',
     },
     {
-      title: 'Lorem Ipsum',
-      desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+      title: 'Decoración de Interiores',
+      desc: 'Decoramos tu casa, tu negocio con los mejores diseños adecuados para ti, trabajamos con vinil full color.',
     },
     {
-      title: 'Lorem Ipsum',
-      desc: "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
+      title: 'Decoración Vehicular',
+      desc: 'Todo tipo de decoración, calcomanias para todo tipo de vehículo, full color.',
     },
   ];
 
@@ -35,12 +35,12 @@ const Service = () => {
           <Col lg={6} md={8}>
             <div className='title text-center mb-5'>
               <h3 className='font-weight-normal text-dark'>
-                <span className='text-warning'>Services</span>
+                <span className='text-warning'>Servicios</span>
               </h3>
               <p className='text-muted'>
-                Lorem Ipsum has been the industry's standard dummy text ever
-                since the 1500s, when an unknown printer took a galley of type
-                and scrambled it to make a type specimen book
+                Toda la información recopilada aquí es de caracter académico, a
+                fin de construir un prototipo útil para una empresa dedicada a
+                dar soluciones gráficas
               </p>
             </div>
           </Col>

@@ -15,7 +15,7 @@ class Prueba extends Component {
                     target='_blank'
                     href='https://www.facebook.com'
                     rel='noopener noreferrer'>
-                    <span>Icono 1</span>
+                    <span>I1</span>
                   </a>
                 </td>
                 <td className='footicon'>
@@ -24,7 +24,7 @@ class Prueba extends Component {
                     target='_blank'
                     href='https://www.twitter.com'
                     rel='noopener noreferrer'>
-                    <span>Icono 2</span>
+                    <span>I2</span>
                   </a>
                 </td>
                 <td className='footicon'>
@@ -33,7 +33,7 @@ class Prueba extends Component {
                     target='_blank'
                     href='https://www.youtube.com'
                     rel='noopener noreferrer'>
-                    <span>Icono 3</span>
+                    <span>I3</span>
                   </a>
                 </td>
                 <td className='footicon'>
@@ -42,7 +42,7 @@ class Prueba extends Component {
                     target='_blank'
                     href='https://www.instagram.com'
                     rel='noopener noreferrer'>
-                    <span>Icono 4</span>
+                    <span>I4</span>
                   </a>
                 </td>
                 <td className='footicon'>
@@ -51,7 +51,7 @@ class Prueba extends Component {
                     target='_blank'
                     href='https://www.google.com'
                     rel='noopener noreferrer'>
-                    <span>Icono 5</span>
+                    <span>I5</span>
                   </a>
                 </td>
                 <td className='footicon'>
@@ -60,7 +60,7 @@ class Prueba extends Component {
                     target='_blank'
                     href='https://www.spotify.com'
                     rel='noopener noreferrer'>
-                    <span>Icono 6</span>
+                    <span>I6</span>
                   </a>
                 </td>
               </tr>
@@ -126,14 +126,14 @@ class Prueba extends Component {
               </tbody>
             </table>
           </div>
-
+          <div className='HuellaPersonal'>
+            Made with Love 🤍 by Angelo Benavidez
+          </div>
           <div className='footInfo'>
             <table className='footInfoTable'>
               <tbody>
                 <tr>
-                  <td>
-                    2021 © Tickets PA. Design with Love 🤍 by Angelo Benavidez
-                  </td>
+                  <td>2021 © Tickets PA.</td>
                   <td className='infoDerecha'>Whatsapp: +593 99 50 83 003</td>
                 </tr>
               </tbody>
