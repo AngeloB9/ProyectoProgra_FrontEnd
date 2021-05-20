@@ -21,6 +21,7 @@ const Index = () => {
       <Feature />
       <Service />
       <About />
+
       <Footer />
     </Layout>
   );

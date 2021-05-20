@@ -1,50 +1,148 @@
-import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
-const Footer = () => {
-  const links = [
-    {
-      id: 1,
-      title: 'Feature',
-      child: [
-        { title: 'LOREM IPSUM', link: '/' },
-        { title: 'LOREM IPSUM', link: '/' },
-        { title: 'LOREM IPSUM', link: '/' },
-        { title: 'LOREM IPSUM', link: '/' },
-      ],
-    },
-    {
-      id: 2,
-      title: 'About Us',
-      child: [
-        { title: 'Contact Us', link: '/' },
-        { title: 'FAQs', link: '/' },
-        { title: 'Privacy Policy', link: '/' },
-      ],
-    },
-  ];
+import React, { Component } from 'react';
 
-  return (
-    <footer className='footer'>
-      <Container>
-        <Row>
-          <Col lg={12}>
-            <div className='mb-4'>
-              <p className='text-muted mt-4 mb-2'>abenavidez.dev@gmail.com</p>
-              <h6 className='text-muted font-weight-normal'>+593 985386708</h6>
-            </div>
-          </Col>
-        </Row>
-        <Row className='mt-5'>
-          <Col md={12}>
-            <div className='text-center text-muted'>
-              <p className='mb-0 f-15'>
-                2021 © Tickets PA. Design with Love 🤍 by Angelo Benavidez
-              </p>
-            </div>
-          </Col>
-        </Row>
-      </Container>
-    </footer>
-  );
-};
-export default Footer;
+//Versión 1 del navbar
+class Prueba extends Component {
+  render() {
+    return (
+      <div className='contenedorBarrafoot'>
+        <div className='barrafoot'>
+          <table className='footIconTable'>
+            <tbody>
+              <tr>
+                <td className='footicon'>
+                  <a
+                    className='footLink text-reset text-decoration-none'
+                    target='_blank'
+                    href='https://www.facebook.com'
+                    rel='noopener noreferrer'>
+                    <span>Icono 1</span>
+                  </a>
+                </td>
+                <td className='footicon'>
+                  <a
+                    className='footLink text-reset text-decoration-none'
+                    target='_blank'
+                    href='https://www.twitter.com'
+                    rel='noopener noreferrer'>
+                    <span>Icono 2</span>
+                  </a>
+                </td>
+                <td className='footicon'>
+                  <a
+                    className='footLink text-reset text-decoration-none'
+                    target='_blank'
+                    href='https://www.youtube.com'
+                    rel='noopener noreferrer'>
+                    <span>Icono 3</span>
+                  </a>
+                </td>
+                <td className='footicon'>
+                  <a
+                    className='footLink text-reset text-decoration-none'
+                    target='_blank'
+                    href='https://www.instagram.com'
+                    rel='noopener noreferrer'>
+                    <span>Icono 4</span>
+                  </a>
+                </td>
+                <td className='footicon'>
+                  <a
+                    className='footLink text-reset text-decoration-none'
+                    target='_blank'
+                    href='https://www.google.com'
+                    rel='noopener noreferrer'>
+                    <span>Icono 5</span>
+                  </a>
+                </td>
+                <td className='footicon'>
+                  <a
+                    className='footLink text-reset text-decoration-none'
+                    target='_blank'
+                    href='https://www.spotify.com'
+                    rel='noopener noreferrer'>
+                    <span>Icono 6</span>
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div className='footLinea1'>
+            <table className='footItemTable'>
+              <tbody>
+                <tr>
+                  <td className='footitem'>
+                    <ul className='footLinkList'>
+                      <li>
+                        <h6 className='footTitle'>Github</h6>
+                      </li>
+                      <li>
+                        <a
+                          className='footLink'
+                          href='https://github.com/AngeloB9/ProyectoProgra_FrontEnd'
+                          target='_blank'
+                          rel='noopener noreferrer'>
+                          Frontend
+                        </a>
+                      </li>
+
+                      <li>
+                        <a
+                          className='footLink'
+                          href=''
+                          target='_blank'
+                          rel='noopener noreferrer'>
+                          Backend - Proximamente
+                        </a>
+                      </li>
+                    </ul>
+                  </td>
+                  <td className='footitem'>
+                    <ul className='footLinkList'>
+                      <li>
+                        <h6 className='footTitle'>Tecnologías</h6>
+                      </li>
+                      <li>
+                        <a
+                          className='footLink'
+                          href='https://nextjs.org/docs'
+                          target='_blank'
+                          rel='noopener noreferrer'>
+                          Next Js
+                        </a>
+                      </li>
+                      <li>
+                        <a
+                          className='footLink'
+                          href='https://docs.microsoft.com/en-us/dotnet/framework/'
+                          target='_blank'
+                          rel='noopener noreferrer'>
+                          .NetFramework
+                        </a>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div className='footInfo'>
+            <table className='footInfoTable'>
+              <tbody>
+                <tr>
+                  <td>
+                    2021 © Tickets PA. Design with Love 🤍 by Angelo Benavidez
+                  </td>
+                  <td className='infoDerecha'>Whatsapp: +593 99 50 83 003</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default Prueba;
