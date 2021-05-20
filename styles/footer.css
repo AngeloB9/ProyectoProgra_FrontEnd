@@ -1,3 +1,7 @@
-.footer section {
-  background: blue;
+.footer {
+  background: #268fd9;
+}
+.f-15 {
+  padding-top: 10px;
+  color: white;
 }

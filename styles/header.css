@@ -1,5 +1,5 @@
 .header {
-  padding: 0px 1px;
+  padding: 0px 0px;
 }
 .header .nav-item {
   padding-left: 50px;
@@ -7,7 +7,7 @@
 .header .navbar {
   padding: 10px 0px;
   line-height: 50px;
-  background: #f8f1f1;
+  background: #268fd9;
 }
 .header.sticky {
   position: absolute;
@@ -22,7 +22,7 @@
   left: 0;
   padding: 10px 15px;
   width: 100%;
-  background: #f8f1f1;
+  background: #268fd9;
   box-shadow: 0px 6px 13px 0px rgb(0 0 0 / 6%);
   opacity: 0;
   -webkit-animation: fadeInDown 0.95s ease-in-out 0s 1 normal none running;

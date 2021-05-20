@@ -19,6 +19,7 @@ a {
   padding-bottom: 100px;
   position: relative;
 }
-.section > footer section {
-  background: blue;
+.btn-warning {
+  background-color: rgb(14, 134, 212);
+  color: white;
 }
