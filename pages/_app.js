@@ -3,6 +3,7 @@ import '../styles/globals.css';
 import '../styles/header.css';
 import '../styles/footer.css';
 import '../styles/footer.css';
+import { ThemeProvider } from '@material-ui/core/styles';
 
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
