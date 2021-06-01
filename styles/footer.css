@@ -82,12 +82,40 @@
     margin: 0 auto;
     list-style-type: none;
   }
+  .footiconF {
+    padding: 1em;
+    color: #005795;
+    font-size: 1em;
+    text-align: center;
+    width: 3rem;
+  }
 }
 @media screen and (max-width: 375px) {
   .footLinkList {
     display: table;
     margin: 0 auto;
     list-style-type: none;
+  }
+  .footiconF {
+    padding: 1em;
+    color: #005795;
+    font-size: 1em;
+    text-align: center;
+    width: 3rem;
+  }
+}
+@media screen and (max-width: 425px) {
+  .footLinkList {
+    display: table;
+    margin: 0 auto;
+    list-style-type: none;
+  }
+  .footiconF {
+    padding: 1em;
+    color: #005795;
+    font-size: 1em;
+    text-align: center;
+    width: 3rem;
   }
 }
 .infoDerecha {

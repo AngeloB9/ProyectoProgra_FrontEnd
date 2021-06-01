@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
-
+import TwitterIcon from '@material-ui/icons/Twitter';
+import FacebookIcon from '@material-ui/icons/Facebook';
+import YouTubeIcon from '@material-ui/icons/YouTube';
+import SchoolIcon from '@material-ui/icons/School';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
 //Versión 1 del navbar
 class Prueba extends Component {
   render() {
@@ -15,7 +20,7 @@ class Prueba extends Component {
                     target='_blank'
                     href='https://www.facebook.com'
                     rel='noopener noreferrer'>
-                    <span>I1</span>
+                    <FacebookIcon style={{ fontSize: 45 }} />
                   </a>
                 </td>
                 <td className='footiconF'>
@@ -24,7 +29,7 @@ class Prueba extends Component {
                     target='_blank'
                     href='https://www.twitter.com'
                     rel='noopener noreferrer'>
-                    <span>I2</span>
+                    <TwitterIcon style={{ fontSize: 45 }} />
                   </a>
                 </td>
                 <td className='footiconF'>
@@ -33,7 +38,7 @@ class Prueba extends Component {
                     target='_blank'
                     href='https://www.youtube.com'
                     rel='noopener noreferrer'>
-                    <span>I3</span>
+                    <YouTubeIcon style={{ fontSize: 45 }} />
                   </a>
                 </td>
                 <td className='footiconF'>
@@ -42,25 +47,24 @@ class Prueba extends Component {
                     target='_blank'
                     href='https://www.instagram.com'
                     rel='noopener noreferrer'>
-                    <span>I4</span>
+                    <InstagramIcon style={{ fontSize: 45 }} />
                   </a>
                 </td>
                 <td className='footiconF'>
                   <a
                     className='footLink text-reset text-decoration-none'
                     target='_blank'
-                    href='https://www.google.com'
-                    rel='noopener noreferrer'>
-                    <span>I5</span>
-                  </a>
+                    href='https://www.linkedin.com'
+                    rel='noopener noreferrer'></a>
+                  <LinkedInIcon style={{ fontSize: 45 }} />
                 </td>
                 <td className='footiconF'>
                   <a
                     className='footLink text-reset text-decoration-none'
                     target='_blank'
-                    href='https://www.spotify.com'
+                    href='https://www.puce.edu.ec'
                     rel='noopener noreferrer'>
-                    <span>I6</span>
+                    <SchoolIcon style={{ fontSize: 45 }} />
                   </a>
                 </td>
               </tr>
