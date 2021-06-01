@@ -4,12 +4,12 @@ import React, { Component } from 'react';
 class Prueba extends Component {
   render() {
     return (
-      <div className='contenedorBarrafoot'>
-        <div className='barrafoot'>
-          <table className='footIconTable'>
+      <div className='contenedorBarrafootF'>
+        <div className='barrafootF'>
+          <table className='footIconTableF'>
             <tbody>
               <tr>
-                <td className='footicon'>
+                <td className='footiconF'>
                   <a
                     className='footLink text-reset text-decoration-none'
                     target='_blank'
@@ -18,7 +18,7 @@ class Prueba extends Component {
                     <span>I1</span>
                   </a>
                 </td>
-                <td className='footicon'>
+                <td className='footiconF'>
                   <a
                     className='footLink text-reset text-decoration-none'
                     target='_blank'
@@ -27,7 +27,7 @@ class Prueba extends Component {
                     <span>I2</span>
                   </a>
                 </td>
-                <td className='footicon'>
+                <td className='footiconF'>
                   <a
                     className='footLink text-reset text-decoration-none'
                     target='_blank'
@@ -36,7 +36,7 @@ class Prueba extends Component {
                     <span>I3</span>
                   </a>
                 </td>
-                <td className='footicon'>
+                <td className='footiconF'>
                   <a
                     className='footLink text-reset text-decoration-none'
                     target='_blank'
@@ -45,7 +45,7 @@ class Prueba extends Component {
                     <span>I4</span>
                   </a>
                 </td>
-                <td className='footicon'>
+                <td className='footiconF'>
                   <a
                     className='footLink text-reset text-decoration-none'
                     target='_blank'
@@ -54,7 +54,7 @@ class Prueba extends Component {
                     <span>I5</span>
                   </a>
                 </td>
-                <td className='footicon'>
+                <td className='footiconF'>
                   <a
                     className='footLink text-reset text-decoration-none'
                     target='_blank'
@@ -67,11 +67,11 @@ class Prueba extends Component {
             </tbody>
           </table>
 
-          <div className='footLinea1'>
-            <table className='footItemTable'>
+          <div className='footLinea1F'>
+            <table className='footItemTableF'>
               <tbody>
                 <tr>
-                  <td className='footitem'>
+                  <td className='footitemF'>
                     <ul className='footLinkList'>
                       <li>
                         <h6 className='footTitle'>Github</h6>
@@ -97,7 +97,7 @@ class Prueba extends Component {
                       </li>
                     </ul>
                   </td>
-                  <td className='footitem'>
+                  <td className='footitemF'>
                     <ul className='footLinkList'>
                       <li>
                         <h6 className='footTitle'>Tecnologías</h6>

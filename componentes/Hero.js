@@ -20,7 +20,7 @@ const Hero = () => {
                 Tickets PA es un sistema que permite llevar un control efeciente
                 de las ordenes de trabajo de una empresa.
               </p>
-              <a href='#' className='btn btn-warning'>
+              <a href='/login' className='btn btn-warning'>
                 Ingresar al Sistema{' '}
                 <span className='ml-2 right-icon'>&#8594;</span>
               </a>

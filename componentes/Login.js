@@ -17,7 +17,7 @@ function Copyright() {
   return (
     <Typography variant='body2' color='textSecondary' align='center'>
       {'Copyright © '}
-      <Link color='inherit' href='https://material-ui.com/'>
+      <Link color='inherit' href=''>
         TicketsPA
       </Link>{' '}
       {new Date().getFullYear()}
@@ -31,7 +31,9 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
   },
   image: {
-    backgroundImage: 'url(https://source.unsplash.com/random)',
+    // backgroundImage: 'url(https://source.unsplash.com/random)',
+    backgroundImage:
+      'url(https://images.unsplash.com/photo-1595303526913-c7037797ebe7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1401&q=80)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'light'
@@ -48,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: theme.palette.secondary.main,
+    backgroundColor: theme.palette.primary.main,
   },
   form: {
     width: '100%', // Fix IE 11 issue.
@@ -105,7 +107,7 @@ export default function SignInSide() {
               type='submit'
               fullWidth
               variant='contained'
-              color='primary'
+              color='secondary'
               className={classes.submit}>
               Ingresar
             </Button>
@@ -117,7 +119,7 @@ export default function SignInSide() {
               </Grid>
               <Grid item>
                 <Link href='#' variant='body2'>
-                  {'No tienes una cuenta? Registrarse'}
+                  {'Registrarse'}
                 </Link>
               </Grid>
             </Grid>
