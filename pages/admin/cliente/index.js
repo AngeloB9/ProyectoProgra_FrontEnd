@@ -14,7 +14,7 @@ const index = () => {
     setloading(true);
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_APIURL}/empleado`,
+        `${process.env.NEXT_PUBLIC_APIURL}/cliente`,
         values
       );
 

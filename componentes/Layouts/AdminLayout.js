@@ -175,3 +175,41 @@ export default function MiniDrawer({ children }) {
     </div>
   );
 }
+// import { useState } from 'react';
+// import Head from 'next/head';
+// import useSWR from 'swr';
+// import Drawer from '../Drawer/SideDrawer';
+// import axios from 'axios';
+
+// const fetcher = (url) => axios.get(url).then((res) => res.data);
+
+// const AdminLayout = ({ children, miniDrawer }) => {
+//   const {} = useSWR(`${process.env.NEXT_PUBLIC_APIURL}/empleados`, fetcher);
+
+//   const [mobileOpen, setMobileOpen] = useState(false);
+
+//   const handleDrawerToggle = () => {
+//     setMobileOpen(!mobileOpen);
+//   };
+
+//   return (
+//     <div className='d-flex' style={{ maxHeight: 'auto', minHeight: '100vh' }}>
+//       <Head>
+//         <title>MediClinic</title>
+//         <meta
+//           name='viewport'
+//           content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no'
+//         />
+//         <link rel='icon' href='/company.png' />
+//       </Head>
+//       <Drawer
+//         mobileOpen={mobileOpen}
+//         handleDrawerToggle={handleDrawerToggle}
+//         miniDrawer={miniDrawer}
+//       />
+//       <div className='w-100 pb-3'>{children}</div>
+//     </div>
+//   );
+// };
+
+// export default AdminLayout;
