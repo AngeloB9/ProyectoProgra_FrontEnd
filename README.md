@@ -1,3 +1,3 @@
 # ProyectoPA_FrontEnd
 
-Proyecto Final de la asignatura de Programación Avanzada
+Proyecto Final de la asignatura de Programación Avanzada - FrontEnd
