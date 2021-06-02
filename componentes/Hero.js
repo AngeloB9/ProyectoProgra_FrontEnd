@@ -1,5 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import Link from 'next/link';
+
 const Hero = () => {
   return (
     <section className='section position-relative'>
@@ -20,10 +22,12 @@ const Hero = () => {
                 Tickets PA es un sistema que permite llevar un control efeciente
                 de las ordenes de trabajo de una empresa.
               </p>
-              <a href='/login' className='btn btn-warning'>
-                Ingresar al Sistema{' '}
-                <span className='ml-2 right-icon'>&#8594;</span>
-              </a>
+              <Link href='/admin/empleados'>
+                <a className='btn btn-warning'>
+                  Ingresar al Sistema{' '}
+                  <span className='ml-2 right-icon'>&#8594;</span>
+                </a>
+              </Link>
             </div>
           </Col>
           <Col lg={6}>
