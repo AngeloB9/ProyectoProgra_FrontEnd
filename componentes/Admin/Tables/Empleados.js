@@ -42,7 +42,7 @@ export default function DataTable({ data }) {
   });
 
   return (
-    <div style={{ height: 400, width: '70%' }}>
+    <div style={{ height: 400, width: '90%' }}>
       <DataGrid rows={info} columns={columns} pageSize={5} checkboxSelection />
     </div>
   );

@@ -83,7 +83,7 @@ class Prueba extends Component {
                       <li>
                         <a
                           className='footLink'
-                          href='https://github.com/AngeloB9/ProyectoProgra_FrontEnd'
+                          href='https://github.com/AngeloB9/ProyectoPA_FrontEnd'
                           target='_blank'
                           rel='noopener noreferrer'>
                           Frontend
