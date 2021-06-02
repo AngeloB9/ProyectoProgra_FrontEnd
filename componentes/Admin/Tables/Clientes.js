@@ -6,11 +6,6 @@ const columns = [
   { field: 'firstName', headerName: 'Nombres', width: 200 },
   { field: 'lastName', headerName: 'Apellidos', width: 200 },
   {
-    field: 'fecha_nacimiento',
-    headerName: 'Nacimiento',
-    width: 200,
-  },
-  {
     field: 'correo',
     headerName: 'Correo',
     width: 200,
@@ -31,13 +26,12 @@ export default function DataTable({ data }) {
   const info = [];
   data.forEach((element) => {
     info.push({
-      id: element.EMPID,
-      firstName: element.EMPNOMBRES,
-      lastName: element.EMPAPELLIDOS,
-      fecha_nacimiento: element.EMPFECHANACIMIENTO.split('T')[0],
-      correo: element.EMPCORREO,
-      celular: element.EMPCELULAR,
-      direccion: element.EMPDIRECCION,
+      id: element.CLIID,
+      firstName: element.CLINOMBRES,
+      lastName: element.CLIAPELLIDOS,
+      direccion: element.CLIDIRECCION,
+      celular: element.CLICELULAR,
+      correo: element.CLICORREO,
     });
   });
 
