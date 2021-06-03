@@ -15,9 +15,8 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
-import CategoryIcon from '@material-ui/icons/Category';
-import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
+import { Group, Accessibility } from '@material-ui/icons';
+import Link from 'next/link';
 
 const drawerWidth = 240;
 
@@ -143,29 +142,22 @@ export default function MiniDrawer({ children }) {
         </div>
         <Divider />
         <List>
-          {['Empleados', 'Categorias', 'Clientes'].map((text, index) => (
-            <ListItem button key={text}>
+          <Link href='/admin/empleados'>
+            <ListItem button>
               <ListItemIcon>
-                {index % 2 === 0 ? <AssignmentIndIcon /> : <CategoryIcon />}
+                <Group />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary='Empleados' />
             </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['Tickets'].map((text, index) => (
-            <ListItem button key={text}>
+          </Link>
+          <Link href='/admin/clientes'>
+            <ListItem button>
               <ListItemIcon>
-                {index % 2 === 0 ? (
-                  <ConfirmationNumberIcon />
-                ) : (
-                  <ConfirmationNumberIcon />
-                )}
+                <Accessibility />
               </ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary='Clientes' />
             </ListItem>
-          ))}
+          </Link>
         </List>
       </Drawer>
       <main className={classes.content}>

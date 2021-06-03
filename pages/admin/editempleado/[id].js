@@ -1,43 +1,44 @@
 import { useState, useMemo, useEffect } from 'react';
 import { LinearProgress } from '@material-ui/core';
 import { useRouter } from 'next/router';
+import axios from 'axios';
 //Componentes
 import EditarEmpleado from 'componentes/Admin/Forms/EditarEmpleado';
 import AdminLayout from 'componentes/Layouts/AdminLayout';
 import ModalSuccess from '@/componentes/Modales/ModalSuccess';
 import ModalError from 'componentes/Modales/ModalError';
 
-const { data: empleado } = await axios(user.token).get(
-  `/empleados${params?.id}`
-);
+export const getServerSideProps = async ({ params }) => {
+  const { data: empleado } = await axios.get(
+    `${process.env.NEXT_PUBLIC_APIURL}/empleado/${params.id}`
+  );
 
-const index = () => {
+  return {
+    props: {
+      empleado,
+    },
+  };
+};
+
+const index = ({ empleado }) => {
   //-----Variables de estado de la página-----//
+  const [loading, setloading] = useState(false);
   const [error, seterror] = useState(null); //si existe un error se setea la variable
   const [modalSuccess, setmodalSuccess] = useState(false); //modal de éxito
   const [modalError, setmodalError] = useState(false); //modal de error
   const router = useRouter();
 
-  //   const {
-  //     data: empleado,
-  //     isLoading,
-  //     isError,
-  //   } = swrHook(`/empleado${router.query.id}`, user);
-
   const handleSubmit = async (values) => {
-    // setloading(true);
+    setloading(true);
     try {
-      const response = await axios(user.token).put(
-        `/empleado${router.query.id}`,
-        values
-      );
+      const response = await axios.put(`/empleado${router.query.id}`, values);
       if (response.status === 200) {
-        // setloading(false);
+        setloading(false);
         setmodalSuccess(true);
       }
     } catch (error_peticion) {
       seterror(error_peticion);
-      // setloading(false);
+      setloading(false);
       setmodalError(true);
     }
   };
@@ -46,7 +47,7 @@ const index = () => {
 
   return (
     <AdminLayout>
-      {<LinearProgress />}
+      {loading && <LinearProgress />}
       <EditarEmpleado empleado={empleado} handleSubmit={handleSubmit} />
       {/*----------Modal de petición exitosa------- */}
       <ModalSuccess

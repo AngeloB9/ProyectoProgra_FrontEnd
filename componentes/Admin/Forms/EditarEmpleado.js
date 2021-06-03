@@ -26,7 +26,7 @@ const EditarEmpleado = ({ handleSubmit, empleado }) => {
         onSubmit={(values, actions) => {
           handleSubmit(values);
         }}
-        initialValues={paciente}>
+        initialValues={empleado}>
         {({ handleSubmit, handleChange, values, errors }) => (
           <Form onSubmit={handleSubmit}>
             <Form.Row>

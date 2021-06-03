@@ -4,7 +4,19 @@ import axios from 'axios';
 import FormTicket from '@/componentes/Admin/Forms/CrearTicket';
 import AdminLayout from '@/componentes/Layouts/AdminLayout';
 
-const index = () => {
+export const getServerSideProps = async () => {
+  const { data: categorias } = await axios.get(
+    `${process.env.NEXT_PUBLIC_APIURL}/categoria`
+  );
+
+  return {
+    props: {
+      categorias,
+    },
+  };
+};
+
+const index = ({ categorias }) => {
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState(null);
 
