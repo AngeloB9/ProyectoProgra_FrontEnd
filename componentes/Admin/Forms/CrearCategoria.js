@@ -1,4 +1,4 @@
-import { Form, Col, Button } from 'react-bootstrap';
+import { Form, Col, Button, Row } from 'react-bootstrap';
 import * as yup from 'yup';
 import { Formik } from 'formik';
 
@@ -25,8 +25,8 @@ const CrearCategoria = ({ handleSubmit }) => {
         initialValues={{}}>
         {({ handleSubmit, handleChange, errors }) => (
           <Form onSubmit={handleSubmit} onChange={handleChange}>
-            <Form.Row>
-              <Form.Group as={Col} sm='4'>
+            <Row>
+              <Col sm='4'>
                 <Form.Label>Id:</Form.Label>
                 <Form.Control
                   name='CATID'
@@ -37,9 +37,9 @@ const CrearCategoria = ({ handleSubmit }) => {
                 <Form.Control.Feedback type='invalid'>
                   {errors.CATID}
                 </Form.Control.Feedback>
-              </Form.Group>
+              </Col>
 
-              <Form.Group as={Col} sm='4'>
+              <Col sm='4'>
                 <Form.Label>Nombre:</Form.Label>
                 <Form.Control
                   name='CATNOMBRE'
@@ -50,9 +50,9 @@ const CrearCategoria = ({ handleSubmit }) => {
                 <Form.Control.Feedback type='invalid'>
                   {errors.CATNOMBRE}
                 </Form.Control.Feedback>
-              </Form.Group>
+              </Col>
 
-              <Form.Group as={Col} sm='4'>
+              <Col sm='4'>
                 <Form.Label>Descripción:</Form.Label>
                 <Form.Control
                   name='CATDESCRIPCION'
@@ -63,10 +63,14 @@ const CrearCategoria = ({ handleSubmit }) => {
                 <Form.Control.Feedback type='invalid'>
                   {errors.CATDESCRIPCION}
                 </Form.Control.Feedback>
-              </Form.Group>
-            </Form.Row>
-            <Button className='d-block mt-3' type='submit' size='lg'>
-              Crear Categoría
+              </Col>
+            </Row>
+            <Button
+              className='d-block mt-3'
+              type='submit'
+              size='lg'
+              style={{ margin: '0 auto' }}>
+              Crear Categoria
             </Button>
           </Form>
         )}
