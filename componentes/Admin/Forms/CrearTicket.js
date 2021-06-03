@@ -1,4 +1,4 @@
-import { Form, Col, Button } from 'react-bootstrap';
+import { Form, Col, Button, Row } from 'react-bootstrap';
 import * as yup from 'yup';
 import { Formik } from 'formik';
 
@@ -35,8 +35,8 @@ const CrearEmpleado = ({ handleSubmit }) => {
         initialValues={{}}>
         {({ handleSubmit, handleChange, errors }) => (
           <Form onSubmit={handleSubmit} onChange={handleChange}>
-            <Form.Row>
-              <Form.Group as={Col} sm='4'>
+            <Row>
+              <Col sm='4'>
                 <Form.Label>Id:</Form.Label>
                 <Form.Control
                   name='TIKID'
@@ -47,9 +47,9 @@ const CrearEmpleado = ({ handleSubmit }) => {
                 <Form.Control.Feedback type='invalid'>
                   {errors.TIKID}
                 </Form.Control.Feedback>
-              </Form.Group>
+              </Col>
 
-              <Form.Group as={Col} sm='4'>
+              <Col sm='4'>
                 <Form.Label>Cliente:</Form.Label>
                 <Form.Control
                   name='CLIID'
@@ -60,9 +60,9 @@ const CrearEmpleado = ({ handleSubmit }) => {
                 <Form.Control.Feedback type='invalid'>
                   {errors.CLIID}
                 </Form.Control.Feedback>
-              </Form.Group>
+              </Col>
 
-              <Form.Group as={Col} sm='4'>
+              <Col sm='4'>
                 <Form.Label>Empleado:</Form.Label>
                 <Form.Control
                   name='EMPID'
@@ -73,10 +73,10 @@ const CrearEmpleado = ({ handleSubmit }) => {
                 <Form.Control.Feedback type='invalid'>
                   {errors.EMPID}
                 </Form.Control.Feedback>
-              </Form.Group>
-            </Form.Row>
-            <Form.Row>
-              <Form.Group as={Col} sm='4'>
+              </Col>
+            </Row>
+            <Row>
+              <Col sm='4'>
                 <Form.Label>Categoria ID:</Form.Label>
                 <Form.Control
                   name='CATID'
@@ -87,8 +87,8 @@ const CrearEmpleado = ({ handleSubmit }) => {
                 <Form.Control.Feedback type='invalid'>
                   {errors.CATID}
                 </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} sm='4'>
+              </Col>
+              <Col sm='4'>
                 <Form.Label>Titulo:</Form.Label>
                 <Form.Control
                   name='TIKTITULO'
@@ -99,8 +99,8 @@ const CrearEmpleado = ({ handleSubmit }) => {
                 <Form.Control.Feedback type='invalid'>
                   {errors.TIKTITULO}
                 </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} sm='4'>
+              </Col>
+              <Col sm='4'>
                 <Form.Label>Descripcion:</Form.Label>
                 <Form.Control
                   name='TIKDESCRIPCION'
@@ -111,14 +111,14 @@ const CrearEmpleado = ({ handleSubmit }) => {
                 <Form.Control.Feedback type='invalid'>
                   {errors.TIKDESCRIPCION}
                 </Form.Control.Feedback>
-              </Form.Group>
-            </Form.Row>
-            <Form.Row>
-              <Form.Group as={Col} sm='4'>
+              </Col>
+            </Row>
+            <Row>
+              <Col sm='4'>
                 <Form.Label>Fecha:</Form.Label>
                 <Form.Control name='TIKFECHA' type='date' required />
-              </Form.Group>
-              <Form.Group as={Col} sm='4'>
+              </Col>
+              <Col sm='4'>
                 <Form.Label>Estado:</Form.Label>
                 <Form.Control
                   name='TIKESTADO'
@@ -129,11 +129,15 @@ const CrearEmpleado = ({ handleSubmit }) => {
                 <Form.Control.Feedback type='invalid'>
                   {errors.TIKESTADO}
                 </Form.Control.Feedback>
-              </Form.Group>
-            </Form.Row>
+              </Col>
+            </Row>
 
-            <Button className='d-block mt-3' type='submit' size='lg'>
-              Crear Ticket
+            <Button
+              className='d-block mt-3'
+              type='submit'
+              size='lg'
+              style={{ margin: '0 auto' }}>
+              Crear Tickets
             </Button>
           </Form>
         )}
