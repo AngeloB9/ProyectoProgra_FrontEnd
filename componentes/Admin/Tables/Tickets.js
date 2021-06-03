@@ -42,13 +42,13 @@ export default function DataTable({ data }) {
       categoria: element.CATID,
       titulo: element.TIKTITULO,
       descripcion: element.TIKDESCRIPCION,
-      fecha: element.TIKFECHA,
+      fecha: element.TIKFECHA.split('T')[0],
       estado: element.TIKESTADO,
     });
   });
 
   return (
-    <div style={{ height: 400, width: '80%' }}>
+    <div style={{ height: 400, width: 'auto' }}>
       <DataGrid rows={info} columns={columns} pageSize={5} checkboxSelection />
     </div>
   );
