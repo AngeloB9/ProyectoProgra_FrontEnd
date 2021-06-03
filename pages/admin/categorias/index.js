@@ -2,7 +2,7 @@ import AdminLayout from '@/componentes/Layouts/AdminLayout';
 import axios from 'axios';
 import useSWR from 'swr';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import EmpleadosTable from '@/componentes/Admin/Tables/Empleados';
+import CategoriasTable from '@/componentes/Admin/Tables/Categorias';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link';
 
@@ -10,7 +10,7 @@ const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const index = () => {
   const { data, error } = useSWR(
-    `${process.env.NEXT_PUBLIC_APIURL}/empleado`,
+    `${process.env.NEXT_PUBLIC_APIURL}/categoria`,
     fetcher
   );
 
@@ -27,16 +27,16 @@ const index = () => {
 
   return (
     <AdminLayout>
-      <Link href='/admin/empleado'>
+      <Link href='/admin/categoria'>
         <Button
           variant='contained'
           color='primary'
           className='mb-4'
           size='large'>
-          Crear Empleado
+          Crear Categoría
         </Button>
       </Link>
-      <EmpleadosTable data={data} />
+      <CategoriasTable data={data} />
     </AdminLayout>
   );
 };

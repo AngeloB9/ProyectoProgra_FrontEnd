@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import FormEmpleado from '@/componentes/Admin/Forms/CrearEmpleado';
+import FormTicket from '@/componentes/Admin/Forms/CrearTicket';
 import AdminLayout from '@/componentes/Layouts/AdminLayout';
 
 const index = () => {
@@ -14,12 +14,12 @@ const index = () => {
     setloading(true);
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_APIURL}/empleado`,
+        `${process.env.NEXT_PUBLIC_APIURL}/ticket`,
         values
       );
 
       setloading(false);
-      router.push('/admin/empleados');
+      router.push('/admin/tickets');
     } catch (error_peticion) {
       seterror(error_peticion);
       setloading(false);
@@ -28,8 +28,8 @@ const index = () => {
 
   return (
     <AdminLayout>
-      <h4>Crear Empleado</h4>
-      <FormEmpleado handleSubmit={handleSubmit} />
+      <h4>Crear Ticket</h4>
+      <FormTicket handleSubmit={handleSubmit} />
     </AdminLayout>
   );
 };

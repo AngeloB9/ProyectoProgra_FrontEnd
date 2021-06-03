@@ -75,6 +75,13 @@
   .footLinea1F {
     width: 85%;
   }
+  .footiconF {
+    padding: 1em;
+    color: #005795;
+    font-size: 1em;
+    text-align: center;
+    width: 3rem;
+  }
 }
 @media screen and (max-width: 320px) {
   .footLinkList {

@@ -17,24 +17,26 @@ const schema = yup.object().shape({
   EMPDIRECCION: yup.string().optional(),
 });
 
-const CrearEmpleado = ({ handleSubmit }) => {
+const EditarEmpleado = ({ handleSubmit, empleado }) => {
   return (
     <div className='p-4'>
+      <h4 className='mb-3'>Editar Empleado</h4>
       <Formik
         validationSchema={schema}
-        onSubmit={(values) => {
+        onSubmit={(values, actions) => {
           handleSubmit(values);
         }}
-        initialValues={{}}>
-        {({ handleSubmit, handleChange, errors }) => (
-          <Form onSubmit={handleSubmit} onChange={handleChange}>
+        initialValues={paciente}>
+        {({ handleSubmit, handleChange, values, errors }) => (
+          <Form onSubmit={handleSubmit}>
             <Form.Row>
               <Form.Group as={Col} sm='4'>
                 <Form.Label>Id:</Form.Label>
                 <Form.Control
                   name='EMPID'
                   type='text'
-                  placeholder='id'
+                  onChange={handleChange}
+                  value={values.EMPID}
                   isInvalid={errors.EMPID}
                 />
                 <Form.Control.Feedback type='invalid'>
@@ -47,7 +49,8 @@ const CrearEmpleado = ({ handleSubmit }) => {
                 <Form.Control
                   name='EMPNOMBRES'
                   type='text'
-                  placeholder='Nombres'
+                  onChange={handleChange}
+                  value={values.EMPNOMBRES}
                   isInvalid={errors.EMPNOMBRES}
                 />
                 <Form.Control.Feedback type='invalid'>
@@ -60,7 +63,8 @@ const CrearEmpleado = ({ handleSubmit }) => {
                 <Form.Control
                   name='EMPAPELLIDOS'
                   type='text'
-                  placeholder='Apellidos'
+                  onChange={handleChange}
+                  value={values.EMPAPELLIDOS}
                   isInvalid={errors.EMPAPELLIDOS}
                 />
                 <Form.Control.Feedback type='invalid'>
@@ -68,11 +72,17 @@ const CrearEmpleado = ({ handleSubmit }) => {
                 </Form.Control.Feedback>
               </Form.Group>
             </Form.Row>
-
             <Form.Row>
               <Form.Group as={Col} sm='4'>
                 <Form.Label>Fecha Nacimiento:</Form.Label>
-                <Form.Control name='EMPFECHANACIMIENTO' type='date' required />
+                <Form.Control
+                  name='EMPFECHANACIMIENTO'
+                  type='date'
+                  min='1910-01-01'
+                  onChange={handleChange}
+                  value={values.EMPFECHANACIMIENTO}
+                  required
+                />
               </Form.Group>
 
               <Form.Group as={Col} sm='4'>
@@ -80,7 +90,8 @@ const CrearEmpleado = ({ handleSubmit }) => {
                 <Form.Control
                   name='EMPCELULAR'
                   type='text'
-                  placeholder='número'
+                  onChange={handleChange}
+                  value={values.EMPCELULAR}
                   isInvalid={errors.EMPCELULAR}
                 />
                 <Form.Control.Feedback type='invalid'>
@@ -93,7 +104,8 @@ const CrearEmpleado = ({ handleSubmit }) => {
                 <Form.Control
                   name='EMPCORREO'
                   type='text'
-                  placeholder='Correo'
+                  onChange={handleChange}
+                  value={values.EMPCORREO}
                   isInvalid={errors.EMPCORREO}
                 />
                 <Form.Control.Feedback type='invalid'>
@@ -108,7 +120,8 @@ const CrearEmpleado = ({ handleSubmit }) => {
                 <Form.Control
                   name='EMPDIRECCION'
                   type='text'
-                  placeholder='Dirección'
+                  onChange={handleChange}
+                  value={values.EMPDIRECCION}
                   isInvalid={errors.EMPDIRECCION}
                 />
                 <Form.Control.Feedback type='invalid'>
@@ -117,7 +130,7 @@ const CrearEmpleado = ({ handleSubmit }) => {
               </Form.Group>
             </Form.Row>
             <Button className='d-block mt-3' type='submit' size='lg'>
-              Crear Empleado
+              Editar Empleado
             </Button>
           </Form>
         )}
@@ -126,4 +139,4 @@ const CrearEmpleado = ({ handleSubmit }) => {
   );
 };
 
-export default CrearEmpleado;
+export default EditarEmpleado;

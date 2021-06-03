@@ -3,18 +3,25 @@ import * as yup from 'yup';
 import { Formik } from 'formik';
 
 const schema = yup.object().shape({
+  TIKID: yup.string().required('Campo requerido'),
   EMPID: yup
     .string()
     .matches(/^[0-9]{0,10}$/i, 'Es un campo numerico de hasta 10 digitos')
     .required('Campo requerido'),
-  EMPNOMBRES: yup.string().required('Campo requerido'),
-  EMPAPELLIDOS: yup.string().required('Campo requerido'),
-  EMPCORREO: yup.string().email('Correo inválido').required('Campo requerido'),
-  EMPCELULAR: yup
+  CLIID: yup
     .string()
-    .matches(/^09[8|9]{1}[0-9]{7}$/i, 'Formato incorrecto (ej: 0991234567)')
+    .matches(/^[0-9]{0,10}$/i, 'Es un campo numerico de hasta 10 digitos')
     .required('Campo requerido'),
-  EMPDIRECCION: yup.string().optional(),
+  CATID: yup
+    .string()
+    .matches(
+      /^[A-Z0-9]{0,8}$/i,
+      'Es un campo alfanumerico de hasta 8 caracteres'
+    )
+    .required('Campo requerido'),
+  TIKTITULO: yup.string().required('Campo requerido'),
+  TIKDESCRIPCION: yup.string().required('Campo requerido'),
+  TIKESTADO: yup.string(),
 });
 
 const CrearEmpleado = ({ handleSubmit }) => {
@@ -32,92 +39,101 @@ const CrearEmpleado = ({ handleSubmit }) => {
               <Form.Group as={Col} sm='4'>
                 <Form.Label>Id:</Form.Label>
                 <Form.Control
-                  name='EMPID'
+                  name='TIKID'
                   type='text'
                   placeholder='id'
+                  isInvalid={errors.TIKID}
+                />
+                <Form.Control.Feedback type='invalid'>
+                  {errors.TIKID}
+                </Form.Control.Feedback>
+              </Form.Group>
+
+              <Form.Group as={Col} sm='4'>
+                <Form.Label>Cliente:</Form.Label>
+                <Form.Control
+                  name='CLIID'
+                  type='text'
+                  placeholder='Cliente ID'
+                  isInvalid={errors.CLIID}
+                />
+                <Form.Control.Feedback type='invalid'>
+                  {errors.CLIID}
+                </Form.Control.Feedback>
+              </Form.Group>
+
+              <Form.Group as={Col} sm='4'>
+                <Form.Label>Empleado:</Form.Label>
+                <Form.Control
+                  name='EMPID'
+                  type='text'
+                  placeholder='Empleado ID'
                   isInvalid={errors.EMPID}
                 />
                 <Form.Control.Feedback type='invalid'>
                   {errors.EMPID}
                 </Form.Control.Feedback>
               </Form.Group>
-
-              <Form.Group as={Col} sm='4'>
-                <Form.Label>Nombres:</Form.Label>
-                <Form.Control
-                  name='EMPNOMBRES'
-                  type='text'
-                  placeholder='Nombres'
-                  isInvalid={errors.EMPNOMBRES}
-                />
-                <Form.Control.Feedback type='invalid'>
-                  {errors.EMPNOMBRES}
-                </Form.Control.Feedback>
-              </Form.Group>
-
-              <Form.Group as={Col} sm='4'>
-                <Form.Label>Apellidos:</Form.Label>
-                <Form.Control
-                  name='EMPAPELLIDOS'
-                  type='text'
-                  placeholder='Apellidos'
-                  isInvalid={errors.EMPAPELLIDOS}
-                />
-                <Form.Control.Feedback type='invalid'>
-                  {errors.EMPAPELLIDOS}
-                </Form.Control.Feedback>
-              </Form.Group>
             </Form.Row>
-
             <Form.Row>
               <Form.Group as={Col} sm='4'>
-                <Form.Label>Fecha Nacimiento:</Form.Label>
-                <Form.Control name='EMPFECHANACIMIENTO' type='date' required />
-              </Form.Group>
-
-              <Form.Group as={Col} sm='4'>
-                <Form.Label>Número Celular:</Form.Label>
+                <Form.Label>Categoria ID:</Form.Label>
                 <Form.Control
-                  name='EMPCELULAR'
+                  name='CATID'
                   type='text'
-                  placeholder='número'
-                  isInvalid={errors.EMPCELULAR}
+                  placeholder='Codigo Categoria'
+                  isInvalid={errors.CATID}
                 />
                 <Form.Control.Feedback type='invalid'>
-                  {errors.EMPCELULAR}
+                  {errors.CATID}
                 </Form.Control.Feedback>
               </Form.Group>
-
               <Form.Group as={Col} sm='4'>
-                <Form.Label>Correo:</Form.Label>
+                <Form.Label>Titulo:</Form.Label>
                 <Form.Control
-                  name='EMPCORREO'
+                  name='TIKTITULO'
                   type='text'
-                  placeholder='Correo'
-                  isInvalid={errors.EMPCORREO}
+                  placeholder='Titulo del Ticket'
+                  isInvalid={errors.TIKTITULO}
                 />
                 <Form.Control.Feedback type='invalid'>
-                  {errors.EMPCORREO}
+                  {errors.TIKTITULO}
+                </Form.Control.Feedback>
+              </Form.Group>
+              <Form.Group as={Col} sm='4'>
+                <Form.Label>Descripcion:</Form.Label>
+                <Form.Control
+                  name='TIKDESCRIPCION'
+                  type='text'
+                  placeholder='Descripción de la orden'
+                  isInvalid={errors.TIKDESCRIPCION}
+                />
+                <Form.Control.Feedback type='invalid'>
+                  {errors.TIKDESCRIPCION}
                 </Form.Control.Feedback>
               </Form.Group>
             </Form.Row>
-
             <Form.Row>
               <Form.Group as={Col} sm='4'>
-                <Form.Label>Dirección:</Form.Label>
+                <Form.Label>Fecha:</Form.Label>
+                <Form.Control name='TIKFECHA' type='date' required />
+              </Form.Group>
+              <Form.Group as={Col} sm='4'>
+                <Form.Label>Estado:</Form.Label>
                 <Form.Control
-                  name='EMPDIRECCION'
+                  name='TIKESTADO'
                   type='text'
-                  placeholder='Dirección'
-                  isInvalid={errors.EMPDIRECCION}
+                  placeholder='Estado del Ticket'
+                  isInvalid={errors.TIKESTADO}
                 />
                 <Form.Control.Feedback type='invalid'>
-                  {errors.EMPDIRECCION}
+                  {errors.TIKESTADO}
                 </Form.Control.Feedback>
               </Form.Group>
             </Form.Row>
+
             <Button className='d-block mt-3' type='submit' size='lg'>
-              Crear Empleado
+              Crear Ticket
             </Button>
           </Form>
         )}

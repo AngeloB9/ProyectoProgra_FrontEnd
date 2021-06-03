@@ -15,8 +15,9 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import MailIcon from '@material-ui/icons/Mail';
+import AssignmentIndIcon from '@material-ui/icons/AssignmentInd';
+import CategoryIcon from '@material-ui/icons/Category';
+import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
 
 const drawerWidth = 240;
 
@@ -115,7 +116,7 @@ export default function MiniDrawer({ children }) {
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' noWrap>
-            Mini variant drawer
+            Tickets PA
           </Typography>
         </Toolbar>
       </AppBar>
@@ -142,10 +143,10 @@ export default function MiniDrawer({ children }) {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
+          {['Empleados', 'Categorias', 'Clientes'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {index % 2 === 0 ? <AssignmentIndIcon /> : <CategoryIcon />}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
@@ -153,10 +154,14 @@ export default function MiniDrawer({ children }) {
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
+          {['Tickets'].map((text, index) => (
             <ListItem button key={text}>
               <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                {index % 2 === 0 ? (
+                  <ConfirmationNumberIcon />
+                ) : (
+                  <ConfirmationNumberIcon />
+                )}
               </ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
@@ -170,3 +175,41 @@ export default function MiniDrawer({ children }) {
     </div>
   );
 }
+// import { useState } from 'react';
+// import Head from 'next/head';
+// import useSWR from 'swr';
+// import Drawer from '../Drawer/SideDrawer';
+// import axios from 'axios';
+
+// const fetcher = (url) => axios.get(url).then((res) => res.data);
+
+// const AdminLayout = ({ children, miniDrawer }) => {
+//   const {} = useSWR(`${process.env.NEXT_PUBLIC_APIURL}/empleados`, fetcher);
+
+//   const [mobileOpen, setMobileOpen] = useState(false);
+
+//   const handleDrawerToggle = () => {
+//     setMobileOpen(!mobileOpen);
+//   };
+
+//   return (
+//     <div className='d-flex' style={{ maxHeight: 'auto', minHeight: '100vh' }}>
+//       <Head>
+//         <title>MediClinic</title>
+//         <meta
+//           name='viewport'
+//           content='minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no'
+//         />
+//         <link rel='icon' href='/company.png' />
+//       </Head>
+//       <Drawer
+//         mobileOpen={mobileOpen}
+//         handleDrawerToggle={handleDrawerToggle}
+//         miniDrawer={miniDrawer}
+//       />
+//       <div className='w-100 pb-3'>{children}</div>
+//     </div>
+//   );
+// };
+
+// export default AdminLayout;
