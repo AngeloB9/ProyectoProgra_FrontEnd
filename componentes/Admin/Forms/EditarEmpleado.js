@@ -26,7 +26,7 @@ const EditarEmpleado = ({ handleSubmit, empleado }) => {
         onSubmit={(values, actions) => {
           handleSubmit(values);
         }}
-        initialValues={paciente}>
+        initialValues={empleado}>
         {({ handleSubmit, handleChange, values, errors }) => (
           <Form onSubmit={handleSubmit}>
             <Form.Row>
@@ -35,6 +35,7 @@ const EditarEmpleado = ({ handleSubmit, empleado }) => {
                 <Form.Control
                   name='EMPID'
                   type='text'
+                  edit='false'
                   onChange={handleChange}
                   value={values.EMPID}
                   isInvalid={errors.EMPID}
@@ -78,9 +79,9 @@ const EditarEmpleado = ({ handleSubmit, empleado }) => {
                 <Form.Control
                   name='EMPFECHANACIMIENTO'
                   type='date'
-                  min='1910-01-01'
+                  //min='1910-01-01'
                   onChange={handleChange}
-                  value={values.EMPFECHANACIMIENTO}
+                  value={values.EMPFECHANACIMIENTO.split('T')[0]}
                   required
                 />
               </Form.Group>

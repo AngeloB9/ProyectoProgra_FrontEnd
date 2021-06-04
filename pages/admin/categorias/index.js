@@ -5,7 +5,7 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import CategoriasTable from '@/componentes/Admin/Tables/Categorias';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link';
-import ModalEliminar from '@/componentes/Admin/Modales/ModalEliminar';
+import ModalEliminar from '@/componentes/Modales/ModalEliminar';
 import { useState, useMemo } from 'react';
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
