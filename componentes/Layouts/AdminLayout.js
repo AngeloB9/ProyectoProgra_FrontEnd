@@ -15,7 +15,12 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import { Group, Accessibility } from '@material-ui/icons';
+import {
+  Group,
+  Accessibility,
+  Category,
+  ConfirmationNumber,
+} from '@material-ui/icons';
 import Link from 'next/link';
 
 const drawerWidth = 240;
@@ -156,6 +161,23 @@ export default function MiniDrawer({ children }) {
                 <Accessibility />
               </ListItemIcon>
               <ListItemText primary='Clientes' />
+            </ListItem>
+          </Link>
+          <Link href='/admin/categorias'>
+            <ListItem button>
+              <ListItemIcon>
+                <Category />
+              </ListItemIcon>
+              <ListItemText primary='Categorías' />
+            </ListItem>
+          </Link>
+          <Divider></Divider>
+          <Link href='/admin/tickets'>
+            <ListItem button>
+              <ListItemIcon>
+                <ConfirmationNumber />
+              </ListItemIcon>
+              <ListItemText primary='Tickets' />
             </ListItem>
           </Link>
         </List>

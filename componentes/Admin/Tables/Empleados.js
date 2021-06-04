@@ -3,6 +3,7 @@ import { Button } from 'react-bootstrap';
 import { DataGrid } from '@material-ui/data-grid';
 import Link from 'next/link';
 
+const handleModalDelete = () => {};
 const columns = [
   { field: 'id', headerName: 'ID', width: 70 },
   { field: 'firstName', headerName: 'Nombres', width: 200 },
@@ -45,15 +46,16 @@ const columns = [
     headerName: 'Eliminar',
     width: 200,
     disableClickEventBubbling: true,
-    renderCell: () => {
-      const onClick = () => {
-        return alert('No haga eso compa');
-      };
+    renderCell: (objeto) => {
+      // const onClick = () => {
+      //   return alert('No haga eso compa');
+      // };
       return (
         <Button
           variant='danger'
           onClick={() => {
-            handleModalDelete(categoria);
+            //handleModalDelete(empleado);
+            handleModalDelete(objeto);
           }}>
           Eliminar
           <i className='fas fa-trash-alt' />
