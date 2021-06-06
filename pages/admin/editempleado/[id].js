@@ -35,11 +35,13 @@ const index = ({ empleado }) => {
   const handleSubmit = async (values) => {
     setloading(true);
     try {
-      const response = await axios.put(`/empleado/${router.query.id}`, values);
-      if (response.status === 200) {
-        setloading(false);
-        setmodalSuccess(true);
-      }
+      const response = await axios.put(
+        `${process.env.NEXT_PUBLIC_APIURL}/empleado/${router.query.id}`,
+        values
+      );
+
+      setloading(false);
+      setmodalSuccess(true);
     } catch (error_peticion) {
       seterror(error_peticion);
       setloading(false);

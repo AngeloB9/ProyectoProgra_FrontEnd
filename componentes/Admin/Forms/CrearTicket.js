@@ -1,6 +1,8 @@
-import { Form, Col, Button, Row } from 'react-bootstrap';
+import { Form, Col, Button, Row, ListGroup } from 'react-bootstrap';
 import * as yup from 'yup';
 import { Formik } from 'formik';
+import { useState } from 'react';
+import PageviewIcon from '@material-ui/icons/Pageview';
 
 const schema = yup.object().shape({
   TIKID: yup.string().required('Campo requerido'),
@@ -24,7 +26,17 @@ const schema = yup.object().shape({
   TIKESTADO: yup.string(),
 });
 
-const CrearEmpleado = ({ handleSubmit }) => {
+const CrearTicket = ({
+  handleSubmit,
+  handleChange,
+  clientesQuery,
+  handleSearchCliente,
+  clientesResults,
+  empleado,
+  handleChangeClientesQuery,
+  handleSearchClienteKey,
+}) => {
+  const [clienteSelect, setclienteSelect] = useState('');
   return (
     <div className='p-4'>
       <Formik
@@ -50,18 +62,58 @@ const CrearEmpleado = ({ handleSubmit }) => {
               </Col>
 
               <Col sm='4'>
-                <Form.Label>Cliente:</Form.Label>
-                <Form.Control
+                <Form.Label>Buscar Cliente:</Form.Label>
+                <div className='d-flex'>
+                  <Form.Control
+                    name='buscar_cliente'
+                    type='text'
+                    placeholder='Cédula o Nombres'
+                    value={clientesQuery}
+                    onChange={handleChangeClientesQuery}
+                    onKeyDown={handleSearchClienteKey}
+                  />
+                  <Button onClick={handleSearchCliente}>
+                    <PageviewIcon></PageviewIcon>
+                  </Button>
+                </div>
+                {/* <Form.Control
                   name='CLIID'
                   type='text'
                   placeholder='Cliente ID'
                   isInvalid={errors.CLIID}
-                />
-                <Form.Control.Feedback type='invalid'>
-                  {errors.CLIID}
-                </Form.Control.Feedback>
+                /> */}
+                {/* <ListGroup variant='flush'>
+                  {clientesResults.length > 0 ? (
+                    clientesResults.map((cliente) => (
+                      <StyledListItem
+                        key={cliente.CLIID}
+                        onClick={() => {
+                          handleClickPaciente(cliente);
+                          setclienteSelect(
+                            `${cliente.nombres
+                              .toString()
+                              .trim()} ${cliente.apellidos.toString().trim()}`
+                          );
+                        }}>
+                        {`${cliente.nombres} ${cliente.apellidos}`}
+                      </StyledListItem>
+                    ))
+                  ) : (
+                    <ListGroup.Item>No hay resultados</ListGroup.Item>
+                  )}
+                </ListGroup> */}
               </Col>
-
+              <Col sm='4'>
+                <Form.Label>Cliente:</Form.Label>
+                <Form.Control
+                  name='buscar_cliente'
+                  type='text'
+                  placeholder=''
+                  value={clienteSelect}
+                />
+              </Col>
+            </Row>
+            <Row>
               <Col sm='4'>
                 <Form.Label>Empleado:</Form.Label>
                 <Form.Control
@@ -74,8 +126,20 @@ const CrearEmpleado = ({ handleSubmit }) => {
                   {errors.EMPID}
                 </Form.Control.Feedback>
               </Col>
-            </Row>
-            <Row>
+              {/* <Col sm='4'>
+                <Form.Label>Empleado:</Form.Label>
+                <Form.Control as='select' name='empid' custom>
+                  {empleado.map((empleado) => (
+                    <option
+                      key={empleado.empid}
+                      value={empleado.empid}>{`Sr./Sra. ${empleado.empnombres
+                      .toString()
+                      .trim()} ${empleado.empapellidos
+                      .toString()
+                      .trim()}`}</option>
+                  ))}
+                </Form.Control>
+              </Col> */}
               <Col sm='4'>
                 <Form.Label>Categoria ID:</Form.Label>
                 <Form.Control
@@ -100,6 +164,8 @@ const CrearEmpleado = ({ handleSubmit }) => {
                   {errors.TIKTITULO}
                 </Form.Control.Feedback>
               </Col>
+            </Row>
+            <Row>
               <Col sm='4'>
                 <Form.Label>Descripcion:</Form.Label>
                 <Form.Control
@@ -112,8 +178,6 @@ const CrearEmpleado = ({ handleSubmit }) => {
                   {errors.TIKDESCRIPCION}
                 </Form.Control.Feedback>
               </Col>
-            </Row>
-            <Row>
               <Col sm='4'>
                 <Form.Label>Fecha:</Form.Label>
                 <Form.Control name='TIKFECHA' type='date' required />
@@ -146,4 +210,4 @@ const CrearEmpleado = ({ handleSubmit }) => {
   );
 };
 
-export default CrearEmpleado;
+export default CrearTicket;

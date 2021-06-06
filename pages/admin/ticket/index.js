@@ -9,7 +9,7 @@ const index = () => {
   const [error, seterror] = useState(null);
 
   const router = useRouter();
-
+  //const { data: cliente } = await axios.get(`cliente`);
   const handleSubmit = async (values) => {
     setloading(true);
     try {
