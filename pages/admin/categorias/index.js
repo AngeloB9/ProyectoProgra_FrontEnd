@@ -7,32 +7,38 @@ import Button from '@material-ui/core/Button';
 import Link from 'next/link';
 import ModalEliminar from '@/componentes/Modales/ModalEliminar';
 import { useState, useMemo } from 'react';
+import { useRouter } from 'next/router';
 
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const index = () => {
-  const { data, error } = useSWR(
+  const { data, error: errorfetch } = useSWR(
     `${process.env.NEXT_PUBLIC_APIURL}/categoria`,
     fetcher
   );
+  const [categoria, setcategoria] = useState({});
+  const [loading, setloading] = useState(false);
+  const [error, seterror] = useState(null);
+  const router = useRouter();
   const [deleteModal, setdeleteModal] = useState(false); //variable para el modal de eliminación
+
   //Controla cuando aparece el modal de eliminación
-  const handleModalDelete = (categoria) => {
-    setcategoria(categoria);
+  const handleModalDelete = (categoria_delete) => {
+    console.log(categoria_delete);
+    setcategoria(categoria_delete);
     setdeleteModal(true);
   };
-  //Controla la petición de eliminación de una categoría
+  //Controla la petición de eliminación de un paciente
   const handleDelete = async () => {
     setloading(true);
     try {
-      const response = await axios(user.token).delete(
-        `/categoria${categoria.catid}`
+      const response = await axios.delete(
+        `${process.env.NEXT_PUBLIC_APIURL}/categoria/${categoria.id}`
       );
-      if (response.status == 204) {
-        setloading(false);
-        setdeleteModal(false);
-        router.push(router.asPath); //refresca los props de la pagina
-      }
+
+      setloading(false);
+      setdeleteModal(false);
+      router.reload();
     } catch (error_peticion) {
       seterror(error_peticion);
       setloading(false);
@@ -60,12 +66,13 @@ const index = () => {
           Crear Categoría
         </Button>
       </Link>
-      <CategoriasTable data={data} handleModalDelete={handleModalDelete} />
+      <CategoriasTable handleModalDelete={handleModalDelete} data={data} />
+      {/*----------Modal para eliminar------- */}
       <ModalEliminar
         show={deleteModal}
         handleClose={() => setdeleteModal(false)}
-        titulo='Eliminar Categoría'
-        mensaje={`Esta seguro que desea eliminar la categoria ?`}
+        titulo='Eliminar Categoria'
+        mensaje={`Esta seguro que desea eliminar la categoria`}
         handleDelete={handleDelete}
       />
     </AdminLayout>

@@ -9,6 +9,7 @@ import ModalEliminar from '@/componentes/Modales/ModalEliminar';
 import ModalSuccess from '@/componentes/Modales/ModalSuccess';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
+
 const fetcher = (url) => axios.get(url).then((res) => res.data);
 
 const index = () => {
