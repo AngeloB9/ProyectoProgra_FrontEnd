@@ -3,28 +3,28 @@ import { Container, Row, Col } from 'reactstrap';
 const Service = () => {
   const services = [
     {
-      title: 'Diseño Gráfico',
-      desc: '"Todo está diseñado. Pocas cosas están bien diseñadas". Plasmamos tus ideas',
+      title: 'SQL Server Express',
+      desc: 'SQL Server 2019 Express es una edición gratuita de SQL Server ideal para el desarrollo y la producción de aplicaciones de escritorio, aplicaciones web y pequeñas aplicaciones de servidor.',
     },
     {
-      title: 'Impresión de Lonas Industriales',
-      desc: 'Lonas full color, todo tamaño. ',
+      title: 'Visual Studio 2019',
+      desc: 'IDE de desarrollo utilizado para el Framework .NET Framework ',
     },
     {
-      title: 'Estampados de Camisetas',
-      desc: '6 tipos de diferentes de telas, 4 técnicas distintas de estampados, aplicamos la que mejor se ajuste a tus necesidades.',
+      title: '. NET Framework',
+      desc: 'Llenar',
     },
     {
-      title: 'Estampados de Tasas',
-      desc: 'Ideal para recuerdos, regalos, todo tipo de Diseño.',
+      title: 'Next Js',
+      desc: 'Llenar',
     },
     {
-      title: 'Decoración de Interiores',
-      desc: 'Decoramos tu casa, tu negocio con los mejores diseños adecuados para ti, trabajamos con vinil full color.',
+      title: 'VS Code',
+      desc: 'Llenar',
     },
     {
-      title: 'Decoración Vehicular',
-      desc: 'Todo tipo de decoración, calcomanias para todo tipo de vehículo, full color.',
+      title: 'Otros',
+      desc: 'Llenar',
     },
   ];
 
@@ -35,12 +35,14 @@ const Service = () => {
           <Col lg={6} md={8}>
             <div className='title text-center mb-5'>
               <h3 className='font-weight-normal text-dark'>
-                <span className='text-warning'>Servicios</span>
+                <span className='text-warning'>
+                  Herramientas y Tecnologías Usadas
+                </span>
               </h3>
               <p className='text-muted'>
-                Toda la información recopilada aquí es de caracter académico, a
-                fin de construir un prototipo útil para una empresa dedicada a
-                dar soluciones gráficas
+                Toda la información recopilada aquí es de caracter académico, se
+                detallan de manera resumida las herramientas usadas para generar
+                este proyecto
               </p>
             </div>
           </Col>

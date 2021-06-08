@@ -2,8 +2,15 @@ import { Form, Col, Button, Row, ListGroup } from 'react-bootstrap';
 import * as yup from 'yup';
 import { Formik } from 'formik';
 import { useState } from 'react';
+import styled from 'styled-components';
 import PageviewIcon from '@material-ui/icons/Pageview';
 
+const StyledListItem = styled(ListGroup.Item)`
+  cursor: pointer;
+  &:hover {
+    background: #fbf6f3;
+  }
+`;
 const schema = yup.object().shape({
   TIKID: yup.string().required('Campo requerido'),
   EMPID: yup
@@ -33,6 +40,7 @@ const CrearTicket = ({
   handleSearchCliente,
   clientesResults,
   empleado,
+  handleClickCliente,
   handleChangeClientesQuery,
   handleSearchClienteKey,
 }) => {
@@ -82,7 +90,7 @@ const CrearTicket = ({
                   placeholder='Cliente ID'
                   isInvalid={errors.CLIID}
                 /> */}
-                {/* <ListGroup variant='flush'>
+                {/* <ListGroup variant=''>
                   {clientesResults.length > 0 ? (
                     clientesResults.map((cliente) => (
                       <StyledListItem
@@ -108,6 +116,7 @@ const CrearTicket = ({
                 <Form.Control
                   name='buscar_cliente'
                   type='text'
+                  disabled
                   placeholder=''
                   value={clienteSelect}
                 />

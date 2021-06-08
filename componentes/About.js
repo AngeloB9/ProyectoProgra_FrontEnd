@@ -27,9 +27,10 @@ const About = () => {
               <Col md={6}>
                 <h6 className='text-dark font-weight-light f-20 mb-3'>🔵</h6>
                 <p className='text-muted font-weight-light'>
-                  Soy estudiante de Ingeniería de la Pontificia Universidad
-                  Católica del Ecuador. Este proyecto es de carácter académico,
-                  realizado en la asignatura de Programación Avanzada.
+                  Soy estudiante de Ingeniería en Sistemas y Computación de la
+                  Pontificia Universidad Católica del Ecuador. Este proyecto es
+                  de carácter académico, realizado en la asignatura de
+                  Programación Avanzada.
                 </p>
               </Col>
               <Col md={6}>
