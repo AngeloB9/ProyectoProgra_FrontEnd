@@ -8,23 +8,23 @@ const Service = () => {
     },
     {
       title: 'Visual Studio 2019',
-      desc: 'IDE de desarrollo utilizado para el Framework .NET Framework ',
+      desc: 'Microsoft Visual Studio es un entorno de desarrollo integrado (IDE) para Windows y macOS. Es compatible con múltiples lenguajes de programación, al igual que entornos de desarrollo web, como ASP.NET MVC, Django, etc.',
     },
     {
       title: '. NET Framework',
-      desc: 'Llenar',
+      desc: 'Microsoft .Net Framework es un componente software que da soluciones de código que son utilizadas por los programas (a través de las librerías dll), y que gestiona programas escritos para este Framework.',
     },
     {
       title: 'Next Js',
-      desc: 'Llenar',
+      desc: 'Next.js es un pequeño framework construido sobre React que nos ayuda a construir aplicaciones de una forma más rápida dejando de un lado la parte de la configuración inicial ya que toda esa configuración viene por defecto y permite hacer deploy de nuestra aplicación de manera rápida.',
     },
     {
-      title: 'VS Code',
-      desc: 'Llenar',
+      title: 'Node Js',
+      desc: 'Node.js es un entorno en tiempo de ejecución multiplataforma, de código abierto, para la capa del servidor basado en el lenguaje de programación JavaScript, asíncrono, basado en el motor V8 de Google',
     },
     {
       title: 'Otros',
-      desc: 'Llenar',
+      desc: 'Versionamiento: Git, GitHub Editor: Visual Studio Code, Gráficos: unDraw Ilustraciones, Estilos: Reactstrap, React-Bootstrap',
     },
   ];
 

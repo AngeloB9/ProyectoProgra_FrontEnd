@@ -8,6 +8,7 @@ import {
   Nav,
   NavItem,
   NavLink,
+  Button,
 } from 'reactstrap';
 
 const Header = () => {

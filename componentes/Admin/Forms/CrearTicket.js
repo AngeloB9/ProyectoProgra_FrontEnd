@@ -35,21 +35,21 @@ const schema = yup.object().shape({
 
 const CrearTicket = ({
   handleSubmit,
-  handleChange,
-  clientesQuery,
   handleSearchCliente,
   clientesResults,
-  empleado,
-  handleClickCliente,
   handleChangeClientesQuery,
   handleSearchClienteKey,
+  handleClickCliente,
+  empleados,
 }) => {
   const [clienteSelect, setclienteSelect] = useState('');
+  const [clienteid, setclienteid] = useState('');
   return (
     <div className='p-4'>
       <Formik
         validationSchema={schema}
         onSubmit={(values) => {
+          console.log('hola', clienteid);
           handleSubmit(values);
         }}
         initialValues={{}}>
@@ -76,7 +76,6 @@ const CrearTicket = ({
                     name='buscar_cliente'
                     type='text'
                     placeholder='Cédula o Nombres'
-                    value={clientesQuery}
                     onChange={handleChangeClientesQuery}
                     onKeyDown={handleSearchClienteKey}
                   />
@@ -90,31 +89,30 @@ const CrearTicket = ({
                   placeholder='Cliente ID'
                   isInvalid={errors.CLIID}
                 /> */}
-                {/* <ListGroup variant=''>
+                <ListGroup variant='flush'>
                   {clientesResults.length > 0 ? (
                     clientesResults.map((cliente) => (
                       <StyledListItem
                         key={cliente.CLIID}
                         onClick={() => {
-                          handleClickPaciente(cliente);
+                          //handleClickCliente(cliente);
+                          setclienteid(cliente.CLIID);
                           setclienteSelect(
-                            `${cliente.nombres
-                              .toString()
-                              .trim()} ${cliente.apellidos.toString().trim()}`
+                            `${cliente.CLINOMBRES.toString().trim()} ${cliente.CLIAPELLIDOS.toString().trim()}`
                           );
                         }}>
-                        {`${cliente.nombres} ${cliente.apellidos}`}
+                        {`${cliente.CLINOMBRES} ${cliente.CLIAPELLIDOS}`}
                       </StyledListItem>
                     ))
                   ) : (
                     <ListGroup.Item>No hay resultados</ListGroup.Item>
                   )}
-                </ListGroup> */}
+                </ListGroup>
               </Col>
               <Col sm='4'>
                 <Form.Label>Cliente:</Form.Label>
                 <Form.Control
-                  name='buscar_cliente'
+                  name='CLIID'
                   type='text'
                   disabled
                   placeholder=''
@@ -123,7 +121,7 @@ const CrearTicket = ({
               </Col>
             </Row>
             <Row>
-              <Col sm='4'>
+              <Col sm='4' controlId='empleado-select'>
                 <Form.Label>Empleado:</Form.Label>
                 <Form.Control
                   name='EMPID'
@@ -134,21 +132,17 @@ const CrearTicket = ({
                 <Form.Control.Feedback type='invalid'>
                   {errors.EMPID}
                 </Form.Control.Feedback>
-              </Col>
-              {/* <Col sm='4'>
-                <Form.Label>Empleado:</Form.Label>
-                <Form.Control as='select' name='empid' custom>
-                  {empleado.map((empleado) => (
+                {/* <Form.Control as='select' name='EMPID' custom>
+                  {empleados.map((empleado) => (
                     <option
-                      key={empleado.empid}
-                      value={empleado.empid}>{`Sr./Sra. ${empleado.empnombres
-                      .toString()
-                      .trim()} ${empleado.empapellidos
-                      .toString()
-                      .trim()}`}</option>
+                      key={empleado.EMPID}
+                      value={
+                        empleado.EMPID
+                      }>{`Sr./Sra. ${empleado.EMPNOMBRES.toString().trim()} ${empleado.EMPAPELLIDOS.toString().trim()}`}</option>
                   ))}
-                </Form.Control>
-              </Col> */}
+                </Form.Control> */}
+              </Col>
+
               <Col sm='4'>
                 <Form.Label>Categoria ID:</Form.Label>
                 <Form.Control
