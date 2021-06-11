@@ -15,6 +15,7 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import {
   Group,
   Accessibility,
@@ -178,6 +179,15 @@ export default function MiniDrawer({ children }) {
                 <ConfirmationNumber />
               </ListItemIcon>
               <ListItemText primary='Tickets' />
+            </ListItem>
+          </Link>
+          <Divider></Divider>
+          <Link href='/'>
+            <ListItem button>
+              <ListItemIcon>
+                <ExitToAppIcon />
+              </ListItemIcon>
+              <ListItemText primary='Salir' />
             </ListItem>
           </Link>
         </List>
