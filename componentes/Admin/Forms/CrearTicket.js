@@ -13,14 +13,7 @@ const StyledListItem = styled(ListGroup.Item)`
 `;
 const schema = yup.object().shape({
   TIKID: yup.string().required('Campo requerido'),
-  EMPID: yup
-    .string()
-    .matches(/^[0-9]{0,10}$/i, 'Es un campo numerico de hasta 10 digitos')
-    .required('Campo requerido'),
-  CLIID: yup
-    .string()
-    .matches(/^[0-9]{0,10}$/i, 'Es un campo numerico de hasta 10 digitos')
-    .required('Campo requerido'),
+
   CATID: yup
     .string()
     .matches(
@@ -39,7 +32,6 @@ const CrearTicket = ({
   clientesResults,
   handleChangeClientesQuery,
   handleSearchClienteKey,
-  handleClickCliente,
   empleados,
 }) => {
   const [clienteSelect, setclienteSelect] = useState('');
@@ -49,12 +41,27 @@ const CrearTicket = ({
       <Formik
         validationSchema={schema}
         onSubmit={(values) => {
-          console.log('hola', clienteid);
-          handleSubmit(values);
+          handleSubmit({
+            TIKID: values.TIKID,
+            CLIID: clienteid,
+            EMPID: values.EMPID,
+            CATID: values.CATID,
+            TIKTITULO: values.TIKTITULO,
+            TIKDESCRIPCION: values.TIKDESCRIPCION,
+            TIKFECHA: values.TIKFECHA,
+            TIKESTADO: values.TIKESTADO,
+          });
         }}
-        initialValues={{}}>
+        initialValues={{ EMPID: empleados.empleados[0].EMPID }}>
         {({ handleSubmit, handleChange, errors }) => (
-          <Form onSubmit={handleSubmit} onChange={handleChange}>
+          <Form
+            onSubmit={handleSubmit}
+            onChange={handleChange}
+            onKeyDown={(event) => {
+              if (event.key === 'Enter') {
+                event.preventDefault();
+              }
+            }}>
             <Row>
               <Col sm='4'>
                 <Form.Label>Id:</Form.Label>
@@ -73,7 +80,7 @@ const CrearTicket = ({
                 <Form.Label>Buscar Cliente:</Form.Label>
                 <div className='d-flex'>
                   <Form.Control
-                    name='buscar_cliente'
+                    name='cliente_buscar'
                     type='text'
                     placeholder='Cédula o Nombres'
                     onChange={handleChangeClientesQuery}
@@ -95,7 +102,6 @@ const CrearTicket = ({
                       <StyledListItem
                         key={cliente.CLIID}
                         onClick={() => {
-                          //handleClickCliente(cliente);
                           setclienteid(cliente.CLIID);
                           setclienteSelect(
                             `${cliente.CLINOMBRES.toString().trim()} ${cliente.CLIAPELLIDOS.toString().trim()}`
@@ -112,7 +118,7 @@ const CrearTicket = ({
               <Col sm='4'>
                 <Form.Label>Cliente:</Form.Label>
                 <Form.Control
-                  name='CLIID'
+                  name='cliente_select'
                   type='text'
                   disabled
                   placeholder=''
@@ -121,17 +127,19 @@ const CrearTicket = ({
               </Col>
             </Row>
             <Row>
-              <Col sm='4' controlId='empleado-select'>
-                <Form.Label>Empleado:</Form.Label>
-                <Form.Control
-                  name='EMPID'
-                  type='text'
-                  placeholder='Empleado ID'
-                  isInvalid={errors.EMPID}
-                />
-                <Form.Control.Feedback type='invalid'>
-                  {errors.EMPID}
-                </Form.Control.Feedback>
+              <Col sm='4'>
+                <Form.Group sm='6' controlId='medico-select'>
+                  <Form.Label>Empleados:</Form.Label>
+                  <Form.Control as='select' name='EMPID'>
+                    {empleados.empleados.map((empleado) => (
+                      <option
+                        key={empleado.EMPID}
+                        value={
+                          empleado.EMPID
+                        }>{`${empleado.EMPNOMBRES.toString().trim()} ${empleado.EMPAPELLIDOS.toString().trim()}`}</option>
+                    ))}
+                  </Form.Control>
+                </Form.Group>
                 {/* <Form.Control as='select' name='EMPID' custom>
                   {empleados.map((empleado) => (
                     <option

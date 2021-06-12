@@ -23,17 +23,6 @@ const index = (empleados) => {
   const [clientesQuery, setclientesQuerys] = useState('');
   const [clientesResults, setclientesResults] = useState([]);
   const router = useRouter();
-  const [ticket, setticket] = useState({
-    TIKID: '',
-    CLIID: '',
-    //EMPID: '',
-    EMPID: empleados[0] ? empleados[0].EMPID : '',
-    CATID: '',
-    TIKTITULO: '',
-    TIKDESCRIPCION: '',
-    TIKFECHA: '',
-    TIKESTADO: '',
-  });
   //const { data: cliente } = await axios.get(`cliente`);
   useMemo(() => {
     if (clientesQuery.trim().length == 0) setclientesResults([]);
@@ -63,7 +52,7 @@ const index = (empleados) => {
           `${process.env.NEXT_PUBLIC_APIURL}/cliente/${clientesQuery}`
         );
         setclientesResults([clientes]);
-        console.log(clientes);
+
         setloading(false);
       } catch (error) {
         seterror(error);
@@ -80,13 +69,11 @@ const index = (empleados) => {
       if (clientesQuery.trim()) {
         setloading(true);
         try {
-          const {
-            data: { data: clientes },
-          } = await axios.get(
+          const { data: clientes } = await axios.get(
             `${process.env.NEXT_PUBLIC_APIURL}/cliente/${clientesQuery}`
           );
-          //setclientesResults(clientes);
-          console.log(clientes);
+          setclientesResults([clientes]);
+
           setloading(false);
         } catch (error) {
           seterror(error);
@@ -96,12 +83,6 @@ const index = (empleados) => {
         setclientesResults([]);
       }
     }
-  };
-  const handleClickCliente = (cliente_select) => {
-    setticket({
-      ...ticket,
-      CLIID: cliente_select.CLIID,
-    });
   };
 
   return (
@@ -115,7 +96,6 @@ const index = (empleados) => {
           setclientesQuerys(String(event.target.value));
         }}
         clientesResults={clientesResults}
-        handleClickCliente={handleClickCliente}
         empleados={empleados}
       />
     </AdminLayout>
