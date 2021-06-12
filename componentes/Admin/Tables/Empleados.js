@@ -3,67 +3,64 @@ import { Button } from 'react-bootstrap';
 import { DataGrid } from '@material-ui/data-grid';
 import Link from 'next/link';
 
-const columns = [
-  { field: 'id', headerName: 'ID', width: 70 },
-  { field: 'firstName', headerName: 'Nombres', width: 200 },
-  { field: 'lastName', headerName: 'Apellidos', width: 200 },
-  {
-    field: 'fecha_nacimiento',
-    headerName: 'Nacimiento',
-    width: 200,
-  },
-  {
-    field: 'correo',
-    headerName: 'Correo',
-    width: 200,
-  },
-  {
-    field: 'celular',
-    headerName: 'Celular',
-    width: 150,
-  },
-  {
-    field: 'direccion',
-    headerName: 'Dirección',
-    width: 200,
-  },
-  {
-    field: 'editar',
-    headerName: 'Editar',
-    width: 200,
-    disableClickEventBubbling: true,
-    renderCell: (objeto) => {
-      return (
-        <Link href={`/admin/editempleado/${objeto.row.id}`}>
-          <Button>Editar</Button>
-        </Link>
-      );
+export default function DataTable({ data, handleModalDelete }) {
+  const columns = [
+    { field: 'id', headerName: 'ID', width: 70 },
+    { field: 'firstName', headerName: 'Nombres', width: 200 },
+    { field: 'lastName', headerName: 'Apellidos', width: 200 },
+    {
+      field: 'fecha_nacimiento',
+      headerName: 'Nacimiento',
+      width: 200,
     },
-  },
-  {
-    field: 'eliminar',
-    headerName: 'Eliminar',
-    width: 200,
-    disableClickEventBubbling: true,
-    renderCell: () => {
-      const onClick = () => {
-        return alert('No haga eso compa');
-      };
-      return (
-        <Button
-          variant='danger'
-          onClick={() => {
-            handleModalDelete(categoria);
-          }}>
-          Eliminar
-          <i className='fas fa-trash-alt' />
-        </Button>
-      );
+    {
+      field: 'correo',
+      headerName: 'Correo',
+      width: 200,
     },
-  },
-];
-
-export default function DataTable({ data }) {
+    {
+      field: 'celular',
+      headerName: 'Celular',
+      width: 150,
+    },
+    {
+      field: 'direccion',
+      headerName: 'Dirección',
+      width: 200,
+    },
+    {
+      field: 'editar',
+      headerName: 'Editar',
+      width: 200,
+      disableClickEventBubbling: true,
+      renderCell: (objeto) => {
+        return (
+          <Link href={`/admin/editempleado/${objeto.row.id}`}>
+            <Button>Editar</Button>
+          </Link>
+        );
+      },
+    },
+    {
+      field: 'eliminar',
+      headerName: 'Eliminar',
+      width: 200,
+      disableClickEventBubbling: true,
+      renderCell: (objeto) => {
+        return (
+          <Button
+            variant='danger'
+            onClick={() => {
+              //handleModalDelete(empleado);
+              handleModalDelete(objeto.row);
+            }}>
+            Eliminar
+            <i className='fas fa-trash-alt' />
+          </Button>
+        );
+      },
+    },
+  ];
   const info = [];
   data.forEach((element) => {
     info.push({

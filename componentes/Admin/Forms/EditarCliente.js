@@ -3,122 +3,75 @@ import * as yup from 'yup';
 import { Formik } from 'formik';
 
 const schema = yup.object().shape({
-  EMPID: yup
+  CLIID: yup
     .string()
     .matches(/^[0-9]{0,10}$/i, 'Es un campo numerico de hasta 10 digitos')
     .required('Campo requerido'),
-  EMPNOMBRES: yup
+  CLINOMBRES: yup.string().required('Campo requerido'),
+  CLIAPELLIDOS: yup.string().required('Campo requerido'),
+  CLICORREO: yup.string().email('Correo inválido').required('Campo requerido'),
+  CLICELULAR: yup
     .string()
-    .trim()
-    .matches(/^[aA-zZ\s]+$/, 'Por favor ingrese solo letras')
+    .matches(/^09[8|9]{1}[0-9]{7}$/i, 'Formato incorrecto (ej: 0991234567)')
     .required('Campo requerido'),
-  EMPAPELLIDOS: yup
-    .string()
-    .trim()
-    .matches(/^[aA-zZ\s]+$/, 'Por favor ingrese solo letras')
-    .required('Campo requerido'),
-  EMPCORREO: yup.string().email('Correo inválido').required('Campo requerido'),
-  EMPCELULAR: yup
-    .string()
-    .matches(/^09[0-9]{8}$/i, 'Formato incorrecto (ej: 0991234567)')
-    .required('Campo requerido'),
-  EMPDIRECCION: yup.string().optional(),
+  CLIDIRECCION: yup.string().optional(),
 });
 
-const EditarEmpleado = ({ handleSubmit, empleado }) => {
+const EditarCliente = ({ handleSubmit, cliente }) => {
   return (
     <div className='p-4'>
-      <h4 className='mb-3'>Editar Empleado</h4>
+      <h4 className='mb-3'>Editar Cliente</h4>
       <Formik
         validationSchema={schema}
         onSubmit={(values, actions) => {
           handleSubmit(values);
         }}
-        initialValues={empleado}>
+        initialValues={cliente}>
         {({ handleSubmit, handleChange, values, errors }) => (
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} onChange={handleChange}>
             <Row>
               <Col sm='4'>
                 <Form.Label>Id:</Form.Label>
                 <Form.Control
-                  name='EMPID'
+                  name='CLIID'
                   type='text'
                   edit='false'
                   onChange={handleChange}
-                  value={values.EMPID}
-                  isInvalid={errors.EMPID}
+                  value={values.CLIID}
+                  isInvalid={errors.CLIID}
                 />
                 <Form.Control.Feedback type='invalid'>
-                  {errors.EMPID}
+                  {errors.CLIID}
                 </Form.Control.Feedback>
               </Col>
 
               <Col sm='4'>
                 <Form.Label>Nombres:</Form.Label>
                 <Form.Control
-                  name='EMPNOMBRES'
+                  name='CLINOMBRES'
                   type='text'
+                  edit='false'
                   onChange={handleChange}
-                  value={values.EMPNOMBRES}
-                  isInvalid={errors.EMPNOMBRES}
+                  value={values.CLINOMBRES}
+                  isInvalid={errors.CLINOMBRES}
                 />
                 <Form.Control.Feedback type='invalid'>
-                  {errors.EMPNOMBRES}
+                  {errors.CLINOMBRES}
                 </Form.Control.Feedback>
               </Col>
 
               <Col sm='4'>
                 <Form.Label>Apellidos:</Form.Label>
                 <Form.Control
-                  name='EMPAPELLIDOS'
+                  name='CLIAPELLIDOS'
                   type='text'
+                  edit='false'
                   onChange={handleChange}
-                  value={values.EMPAPELLIDOS}
-                  isInvalid={errors.EMPAPELLIDOS}
+                  value={values.CLIAPELLIDOS}
+                  isInvalid={errors.CLIAPELLIDOS}
                 />
                 <Form.Control.Feedback type='invalid'>
-                  {errors.EMPAPELLIDOS}
-                </Form.Control.Feedback>
-              </Col>
-            </Row>
-            <Row>
-              <Col sm='4'>
-                <Form.Label>Fecha Nacimiento:</Form.Label>
-                <Form.Control
-                  name='EMPFECHANACIMIENTO'
-                  type='date'
-                  //min='1910-01-01'
-                  onChange={handleChange}
-                  value={values.EMPFECHANACIMIENTO.split('T')[0]}
-                  required
-                />
-              </Col>
-
-              <Col sm='4'>
-                <Form.Label>Número Celular:</Form.Label>
-                <Form.Control
-                  name='EMPCELULAR'
-                  type='text'
-                  onChange={handleChange}
-                  value={values.EMPCELULAR}
-                  isInvalid={errors.EMPCELULAR}
-                />
-                <Form.Control.Feedback type='invalid'>
-                  {errors.EMPCELULAR}
-                </Form.Control.Feedback>
-              </Col>
-
-              <Col sm='4'>
-                <Form.Label>Correo:</Form.Label>
-                <Form.Control
-                  name='EMPCORREO'
-                  type='text'
-                  onChange={handleChange}
-                  value={values.EMPCORREO}
-                  isInvalid={errors.EMPCORREO}
-                />
-                <Form.Control.Feedback type='invalid'>
-                  {errors.EMPCORREO}
+                  {errors.CLIAPELLIDOS}
                 </Form.Control.Feedback>
               </Col>
             </Row>
@@ -127,19 +80,54 @@ const EditarEmpleado = ({ handleSubmit, empleado }) => {
               <Col sm='4'>
                 <Form.Label>Dirección:</Form.Label>
                 <Form.Control
-                  name='EMPDIRECCION'
+                  name='CLIDIRECCION'
                   type='text'
+                  edit='false'
                   onChange={handleChange}
-                  value={values.EMPDIRECCION}
-                  isInvalid={errors.EMPDIRECCION}
+                  value={values.CLIDIRECCION}
+                  isInvalid={errors.CLIDIRECCION}
                 />
                 <Form.Control.Feedback type='invalid'>
-                  {errors.EMPDIRECCION}
+                  {errors.CLIDIRECCION}
+                </Form.Control.Feedback>
+              </Col>
+              <Col sm='4'>
+                <Form.Label>Número Celular:</Form.Label>
+                <Form.Control
+                  name='CLICELULAR'
+                  type='text'
+                  edit='false'
+                  onChange={handleChange}
+                  value={values.CLICELULAR}
+                  isInvalid={errors.CLICELULAR}
+                />
+                <Form.Control.Feedback type='invalid'>
+                  {errors.CLICELULAR}
+                </Form.Control.Feedback>
+              </Col>
+
+              <Col sm='4'>
+                <Form.Label>Correo:</Form.Label>
+                <Form.Control
+                  name='CLICORREO'
+                  type='text'
+                  edit='false'
+                  onChange={handleChange}
+                  value={values.CLICORREO}
+                  isInvalid={errors.CLICORREO}
+                />
+                <Form.Control.Feedback type='invalid'>
+                  {errors.CLICORREO}
                 </Form.Control.Feedback>
               </Col>
             </Row>
-            <Button className='d-block mt-3' type='submit' size='lg'>
-              Editar Empleado
+
+            <Button
+              className='d-block mt-3'
+              type='submit'
+              size='lg'
+              style={{ margin: '0 auto' }}>
+              Editar Cliente
             </Button>
           </Form>
         )}
@@ -148,4 +136,4 @@ const EditarEmpleado = ({ handleSubmit, empleado }) => {
   );
 };
 
-export default EditarEmpleado;
+export default EditarCliente;

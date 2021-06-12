@@ -1,4 +1,4 @@
-import { Form, Col, Button } from 'react-bootstrap';
+import { Form, Col, Button, Row } from 'react-bootstrap';
 import * as yup from 'yup';
 import { Formik } from 'formik';
 
@@ -28,8 +28,8 @@ const CrearCliente = ({ handleSubmit }) => {
         initialValues={{}}>
         {({ handleSubmit, handleChange, errors }) => (
           <Form onSubmit={handleSubmit} onChange={handleChange}>
-            <Form.Row>
-              <Form.Group as={Col} sm='4'>
+            <Row>
+              <Col sm='4'>
                 <Form.Label>Id:</Form.Label>
                 <Form.Control
                   name='CLIID'
@@ -40,9 +40,9 @@ const CrearCliente = ({ handleSubmit }) => {
                 <Form.Control.Feedback type='invalid'>
                   {errors.CLIID}
                 </Form.Control.Feedback>
-              </Form.Group>
+              </Col>
 
-              <Form.Group as={Col} sm='4'>
+              <Col sm='4'>
                 <Form.Label>Nombres:</Form.Label>
                 <Form.Control
                   name='CLINOMBRES'
@@ -53,9 +53,9 @@ const CrearCliente = ({ handleSubmit }) => {
                 <Form.Control.Feedback type='invalid'>
                   {errors.CLINOMBRES}
                 </Form.Control.Feedback>
-              </Form.Group>
+              </Col>
 
-              <Form.Group as={Col} sm='4'>
+              <Col sm='4'>
                 <Form.Label>Apellidos:</Form.Label>
                 <Form.Control
                   name='CLIAPELLIDOS'
@@ -66,11 +66,11 @@ const CrearCliente = ({ handleSubmit }) => {
                 <Form.Control.Feedback type='invalid'>
                   {errors.CLIAPELLIDOS}
                 </Form.Control.Feedback>
-              </Form.Group>
-            </Form.Row>
+              </Col>
+            </Row>
 
-            <Form.Row>
-              <Form.Group as={Col} sm='4'>
+            <Row>
+              <Col sm='4'>
                 <Form.Label>Dirección:</Form.Label>
                 <Form.Control
                   name='CLIDIRECCION'
@@ -81,8 +81,8 @@ const CrearCliente = ({ handleSubmit }) => {
                 <Form.Control.Feedback type='invalid'>
                   {errors.CLIDIRECCION}
                 </Form.Control.Feedback>
-              </Form.Group>
-              <Form.Group as={Col} sm='4'>
+              </Col>
+              <Col sm='4'>
                 <Form.Label>Número Celular:</Form.Label>
                 <Form.Control
                   name='CLICELULAR'
@@ -93,9 +93,9 @@ const CrearCliente = ({ handleSubmit }) => {
                 <Form.Control.Feedback type='invalid'>
                   {errors.CLICELULAR}
                 </Form.Control.Feedback>
-              </Form.Group>
+              </Col>
 
-              <Form.Group as={Col} sm='4'>
+              <Col sm='4'>
                 <Form.Label>Correo:</Form.Label>
                 <Form.Control
                   name='CLICORREO'
@@ -106,10 +106,14 @@ const CrearCliente = ({ handleSubmit }) => {
                 <Form.Control.Feedback type='invalid'>
                   {errors.CLICORREO}
                 </Form.Control.Feedback>
-              </Form.Group>
-            </Form.Row>
+              </Col>
+            </Row>
 
-            <Button className='d-block mt-3' type='submit' size='lg'>
+            <Button
+              className='d-block mt-3'
+              type='submit'
+              size='lg'
+              style={{ margin: '0 auto' }}>
               Crear Cliente
             </Button>
           </Form>

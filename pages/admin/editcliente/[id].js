@@ -3,28 +3,25 @@ import { LinearProgress } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import axios from 'axios';
 //Componentes
-import EditarEmpleado from 'componentes/Admin/Forms/EditarEmpleado';
+import EditarCliente from 'componentes/Admin/Forms/EditarCliente';
 import AdminLayout from 'componentes/Layouts/AdminLayout';
 import ModalSuccess from '@/componentes/Modales/ModalSuccess';
 import ModalError from 'componentes/Modales/ModalError';
 
 export const getServerSideProps = async ({ params }) => {
-  const { data: empleado } = await axios.get(
-    `${process.env.NEXT_PUBLIC_APIURL}/empleado/${params.id}`
+  const { data: cliente } = await axios.get(
+    `${process.env.NEXT_PUBLIC_APIURL}/cliente/${params.id}`
   );
   console.log(params);
-  //Retira los espacios innecesarios que traen los datos
-  // Object.keys(empleado).forEach(function (key) {
-  //   empleado[key] = empleado[key] == null ? '' : String(empleado[key]).trim();
-  // });
+
   return {
     props: {
-      empleado,
+      cliente,
     },
   };
 };
 
-const index = ({ empleado }) => {
+const index = ({ cliente }) => {
   //-----Variables de estado de la página-----//
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState(null); //si existe un error se setea la variable
@@ -36,7 +33,7 @@ const index = ({ empleado }) => {
     setloading(true);
     try {
       const response = await axios.put(
-        `${process.env.NEXT_PUBLIC_APIURL}/empleado/${router.query.id}`,
+        `${process.env.NEXT_PUBLIC_APIURL}/cliente/${router.query.id}`,
         values
       );
 
@@ -54,14 +51,14 @@ const index = ({ empleado }) => {
   return (
     <AdminLayout>
       {loading && <LinearProgress />}
-      <EditarEmpleado handleSubmit={handleSubmit} empleado={empleado} />
+      <EditarCliente handleSubmit={handleSubmit} cliente={cliente} />
       {/*----------Modal de petición exitosa------- */}
       <ModalSuccess
         show={modalSuccess}
         handleClose={() => setmodalSuccess(false)}
         tituloMensaje='Edición Exitosa'
-        mensaje='El Empleado se ha modificado satisfactoriamente!'
-        redireccion='/admin/empleados'
+        mensaje='El Cliente se ha modificado satisfactoriamente!'
+        redireccion='/admin/clientes'
       />
       {/*----------Modal de error en petición------- */}
       <ModalError

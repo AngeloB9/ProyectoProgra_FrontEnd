@@ -14,24 +14,25 @@ const schema = yup.object().shape({
   CATDESCRIPCION: yup.string().required('Campo requerido'),
 });
 
-const CrearCategoria = ({ handleSubmit }) => {
+const EditarCategoria = ({ handleSubmit, categoria }) => {
   return (
     <div className='p-4'>
+      <h4 className='mb-3'>Editar Categoria</h4>
       <Formik
         validationSchema={schema}
-        onSubmit={(values) => {
+        onSubmit={(values, actions) => {
           handleSubmit(values);
         }}
-        initialValues={{}}>
-        {({ handleSubmit, handleChange, errors }) => (
+        initialValues={categoria}>
+        {({ handleSubmit, handleChange, values, errors }) => (
           <Form onSubmit={handleSubmit} onChange={handleChange}>
             <Row>
               <Col sm='4'>
                 <Form.Label>Id:</Form.Label>
                 <Form.Control
                   name='CATID'
-                  type='text'
-                  placeholder='id'
+                  onChange={handleChange}
+                  value={values.CATID}
                   isInvalid={errors.CATID}
                 />
                 <Form.Control.Feedback type='invalid'>
@@ -44,7 +45,8 @@ const CrearCategoria = ({ handleSubmit }) => {
                 <Form.Control
                   name='CATNOMBRE'
                   type='text'
-                  placeholder='Nombre Categoría'
+                  onChange={handleChange}
+                  value={values.CATNOMBRE}
                   isInvalid={errors.CATNOMBRE}
                 />
                 <Form.Control.Feedback type='invalid'>
@@ -57,7 +59,8 @@ const CrearCategoria = ({ handleSubmit }) => {
                 <Form.Control
                   name='CATDESCRIPCION'
                   type='text'
-                  placeholder='Descripción de la categoría'
+                  onChange={handleChange}
+                  value={values.CATDESCRIPCION}
                   isInvalid={errors.CATDESCRIPCION}
                 />
                 <Form.Control.Feedback type='invalid'>
@@ -70,7 +73,7 @@ const CrearCategoria = ({ handleSubmit }) => {
               type='submit'
               size='lg'
               style={{ margin: '0 auto' }}>
-              Crear Categoria
+              Editar Categoria
             </Button>
           </Form>
         )}
@@ -79,4 +82,4 @@ const CrearCategoria = ({ handleSubmit }) => {
   );
 };
 
-export default CrearCategoria;
+export default EditarCategoria;

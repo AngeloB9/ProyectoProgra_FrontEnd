@@ -8,6 +8,7 @@ import {
   Nav,
   NavItem,
   NavLink,
+  Button,
 } from 'reactstrap';
 
 const Header = () => {
@@ -39,13 +40,13 @@ const Header = () => {
                 <NavLink href='/'>Home</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href='#feature'>Features</NavLink>
+                <NavLink href='#feature'>Características</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href='#service'>Services</NavLink>
+                <NavLink href='#service'>Herramientas</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href='#about'>About</NavLink>
+                <NavLink href='#about'>Acerca</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
