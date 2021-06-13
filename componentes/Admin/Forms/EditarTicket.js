@@ -17,8 +17,8 @@ const schema = yup.object().shape({
   TIKDESCRIPCION: yup.string().required('Campo requerido'),
   TIKESTADO: yup.string(),
 });
-
-const CrearTicket = ({
+const EditarTicket = ({
+  ticket,
   handleSubmit,
   handleSearchCliente,
   clientesResults,
@@ -31,20 +31,21 @@ const CrearTicket = ({
   const [clienteid, setclienteid] = useState('');
   return (
     <div className='p-4'>
+      <h4 className='mb-3'>Editar Ticket</h4>
       <Formik
         validationSchema={schema}
-        onSubmit={(values) => {
-          handleSubmit({
-            TIKID: values.TIKID,
-            CLIID: clienteid,
-            EMPID: values.EMPID,
-            CATID: values.CATID,
-            TIKTITULO: values.TIKTITULO,
-            TIKDESCRIPCION: values.TIKDESCRIPCION,
-            TIKFECHA: values.TIKFECHA,
-            TIKESTADO: values.TIKESTADO,
-          });
-        }}
+        // onSubmit={(values, actions) => {
+        //   handleSubmit({
+        //     TIKID: values.TIKID,
+        //     CLIID: clienteid,
+        //     EMPID: values.EMPID,
+        //     CATID: values.CATID,
+        //     TIKTITULO: values.TIKTITULO,
+        //     TIKDESCRIPCION: values.TIKDESCRIPCION,
+        //     TIKFECHA: values.TIKFECHA,
+        //     TIKESTADO: values.TIKESTADO,
+        //   });
+        // }}
         initialValues={{ EMPID: empleados.empleados[0].EMPID }}>
         {({ handleSubmit, handleChange, errors }) => (
           <Form
@@ -76,6 +77,7 @@ const CrearTicket = ({
                     name='cliente_buscar'
                     type='text'
                     placeholder='Cédula'
+                    value={values.CLIID}
                     onChange={handleChangeClientesQuery}
                     onKeyDown={handleSearchClienteKey}
                   />
@@ -164,7 +166,8 @@ const CrearTicket = ({
                 <Form.Control
                   name='TIKTITULO'
                   type='text'
-                  placeholder='Titulo del Ticket'
+                  onChange={handleChange}
+                  value={values.TIKTITULO}
                   isInvalid={errors.TIKTITULO}
                 />
                 <Form.Control.Feedback type='invalid'>
@@ -178,7 +181,8 @@ const CrearTicket = ({
                 <Form.Control
                   name='TIKDESCRIPCION'
                   type='text'
-                  placeholder='Descripción de la orden'
+                  onChange={handleChange}
+                  value={values.TIKDESCRIPCION}
                   isInvalid={errors.TIKDESCRIPCION}
                 />
                 <Form.Control.Feedback type='invalid'>
@@ -194,7 +198,8 @@ const CrearTicket = ({
                 <Form.Control
                   name='TIKESTADO'
                   type='text'
-                  placeholder='Estado del Ticket'
+                  onChange={handleChange}
+                  value={values.TIKFECHA}
                   isInvalid={errors.TIKESTADO}
                 />
                 <Form.Control.Feedback type='invalid'>
@@ -217,4 +222,4 @@ const CrearTicket = ({
   );
 };
 
-export default CrearTicket;
+export default EditarTicket;

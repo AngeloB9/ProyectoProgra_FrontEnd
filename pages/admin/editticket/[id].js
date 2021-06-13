@@ -1,9 +1,12 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { LinearProgress } from '@material-ui/core';
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import FormTicket from '@/componentes/Admin/Forms/CrearTicket';
-import AdminLayout from '@/componentes/Layouts/AdminLayout';
-import ModalEliminar from '@/componentes/Modales/ModalEliminar';
+//Componentes
+import EditarTicket from 'componentes/Admin/Forms/EditarTicket';
+import AdminLayout from 'componentes/Layouts/AdminLayout';
+import ModalSuccess from '@/componentes/Modales/ModalSuccess';
+import ModalError from 'componentes/Modales/ModalError';
 
 export const getServerSideProps = async ({}) => {
   const { data: empleados } = await axios.get(
@@ -21,10 +24,11 @@ export const getServerSideProps = async ({}) => {
     },
   };
 };
-
 const index = (empleados, categorias) => {
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState(null);
+  const [modalSuccess, setmodalSuccess] = useState(false); //modal de éxito
+  const [modalError, setmodalError] = useState(false); //modal de error
   const [clientesQuery, setclientesQuerys] = useState('');
   const [clientesResults, setclientesResults] = useState([]);
   const router = useRouter();
@@ -92,8 +96,8 @@ const index = (empleados, categorias) => {
 
   return (
     <AdminLayout>
-      <h4>Crear Ticket</h4>
-      <FormTicket
+      {loading && <LinearProgress />}
+      <EditarTicket
         handleSubmit={handleSubmit}
         handleSearchCliente={handleSearchCliente}
         handleSearchClienteKey={handleSearchClienteKey}
@@ -104,8 +108,22 @@ const index = (empleados, categorias) => {
         empleados={empleados}
         categorias={categorias}
       />
+      {/*----------Modal de petición exitosa------- */}
+      <ModalSuccess
+        show={modalSuccess}
+        handleClose={() => setmodalSuccess(false)}
+        tituloMensaje='Edición Exitosa'
+        mensaje='El Empleado se ha modificado satisfactoriamente!'
+        redireccion='/admin/tickets'
+      />
+      {/*----------Modal de error en petición------- */}
+      <ModalError
+        show={modalError}
+        handleClose={() => setmodalError(false)}
+        tituloMensaje='Error'
+        mensaje='Datos Incorrectos!'
+      />
     </AdminLayout>
   );
 };
-
 export default index;
