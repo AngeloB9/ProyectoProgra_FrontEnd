@@ -18,43 +18,21 @@ const schema = yup.object().shape({
   TIKESTADO: yup.string(),
 });
 
-const CrearTicket = ({
-  handleSubmit,
-  handleSearchCliente,
-  clientesResults,
-  handleChangeClientesQuery,
-  handleSearchClienteKey,
-  empleados,
-  categorias,
-}) => {
-  const [clienteSelect, setclienteSelect] = useState('');
-  const [clienteid, setclienteid] = useState('');
+const CrearTicket = ({ handleSubmit, empleados, categorias, clientes }) => {
   return (
     <div className='p-4'>
       <Formik
         validationSchema={schema}
         onSubmit={(values) => {
-          handleSubmit({
-            TIKID: values.TIKID,
-            CLIID: clienteid,
-            EMPID: values.EMPID,
-            CATID: values.CATID,
-            TIKTITULO: values.TIKTITULO,
-            TIKDESCRIPCION: values.TIKDESCRIPCION,
-            TIKFECHA: values.TIKFECHA,
-            TIKESTADO: values.TIKESTADO,
-          });
+          handleSubmit(values);
         }}
-        initialValues={{ EMPID: empleados.empleados[0].EMPID }}>
+        initialValues={{
+          CLIID: clientes[0].CLIID,
+          EMPID: empleados[0].EMPID,
+          CATID: categorias[0].CATID,
+        }}>
         {({ handleSubmit, handleChange, errors }) => (
-          <Form
-            onSubmit={handleSubmit}
-            onChange={handleChange}
-            onKeyDown={(event) => {
-              if (event.key === 'Enter') {
-                event.preventDefault();
-              }
-            }}>
+          <Form onSubmit={handleSubmit} onChange={handleChange}>
             <Row>
               <Col sm='4'>
                 <Form.Label>Id:</Form.Label>
@@ -70,53 +48,18 @@ const CrearTicket = ({
               </Col>
 
               <Col sm='4'>
-                <Form.Label>Buscar Cliente:</Form.Label>
-                <div className='d-flex'>
-                  <Form.Control
-                    name='cliente_buscar'
-                    type='text'
-                    placeholder='Cédula'
-                    onChange={handleChangeClientesQuery}
-                    onKeyDown={handleSearchClienteKey}
-                  />
-                  <Button onClick={handleSearchCliente}>
-                    <PageviewIcon></PageviewIcon>
-                  </Button>
-                </div>
-                {/* <Form.Control
-                  name='CLIID'
-                  type='text'
-                  placeholder='Cliente ID'
-                  isInvalid={errors.CLIID}
-                /> */}
-                <ListGroup variant='flush'>
-                  {clientesResults.length > 0 ? (
-                    clientesResults.map((cliente) => (
-                      <StyledListItem
+                <Form.Group sm='6' controlId='medico-select'>
+                  <Form.Label>Clientes:</Form.Label>
+                  <Form.Control as='select' name='CLIID'>
+                    {clientes.map((cliente) => (
+                      <option
                         key={cliente.CLIID}
-                        onClick={() => {
-                          setclienteid(cliente.CLIID);
-                          setclienteSelect(
-                            `${cliente.CLINOMBRES.toString().trim()} ${cliente.CLIAPELLIDOS.toString().trim()}`
-                          );
-                        }}>
-                        {`${cliente.CLINOMBRES} ${cliente.CLIAPELLIDOS}`}
-                      </StyledListItem>
-                    ))
-                  ) : (
-                    <ListGroup.Item>No hay resultados</ListGroup.Item>
-                  )}
-                </ListGroup>
-              </Col>
-              <Col sm='4'>
-                <Form.Label>Cliente:</Form.Label>
-                <Form.Control
-                  name='cliente_select'
-                  type='text'
-                  disabled
-                  placeholder=''
-                  value={clienteSelect}
-                />
+                        value={
+                          cliente.CLIID
+                        }>{`${cliente.CLINOMBRES.toString().trim()} ${cliente.CLIAPELLIDOS.toString().trim()}`}</option>
+                    ))}
+                  </Form.Control>
+                </Form.Group>
               </Col>
             </Row>
             <Row>
@@ -124,7 +67,7 @@ const CrearTicket = ({
                 <Form.Group sm='6' controlId='medico-select'>
                   <Form.Label>Empleados:</Form.Label>
                   <Form.Control as='select' name='EMPID'>
-                    {empleados.empleados.map((empleado) => (
+                    {empleados.map((empleado) => (
                       <option
                         key={empleado.EMPID}
                         value={
@@ -136,10 +79,10 @@ const CrearTicket = ({
               </Col>
 
               <Col sm='4'>
-                {/* <Form.Group sm='6' controlId='categoria-select'>
+                <Form.Group sm='6' controlId='categoria-select'>
                   <Form.Label>Categorías:</Form.Label>
                   <Form.Control as='select' name='CATID'>
-                    {categorias.categorias.map((categoria) => (
+                    {categorias.map((categoria) => (
                       <option
                         key={categoria.CATID}
                         value={
@@ -147,17 +90,7 @@ const CrearTicket = ({
                         }>{`${categoria.CATID.toString().trim()} ${categoria.CATDESCRIPCION.toString().trim()}`}</option>
                     ))}
                   </Form.Control>
-                </Form.Group> */}
-                <Form.Label>Categoria ID:</Form.Label>
-                <Form.Control
-                  name='CATID'
-                  type='text'
-                  placeholder='Codigo Categoria'
-                  isInvalid={errors.CATID}
-                />
-                <Form.Control.Feedback type='invalid'>
-                  {errors.CATID}
-                </Form.Control.Feedback>
+                </Form.Group>
               </Col>
               <Col sm='4'>
                 <Form.Label>Titulo:</Form.Label>
