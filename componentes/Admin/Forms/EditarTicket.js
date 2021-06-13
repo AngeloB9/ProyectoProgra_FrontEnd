@@ -17,22 +17,24 @@ const schema = yup.object().shape({
   TIKDESCRIPCION: yup.string().required('Campo requerido'),
   TIKESTADO: yup.string(),
 });
-
-const CrearTicket = ({ handleSubmit, empleados, categorias, clientes }) => {
+const EditarTicket = ({
+  ticket,
+  handleSubmit,
+  empleados,
+  categorias,
+  clientes,
+}) => {
   return (
     <div className='p-4'>
+      <h4 className='mb-3'>Editar Ticket</h4>
       <Formik
         validationSchema={schema}
-        onSubmit={(values) => {
+        onSubmit={(values, actions) => {
           handleSubmit(values);
         }}
-        initialValues={{
-          CLIID: clientes[0].CLIID,
-          EMPID: empleados[0].EMPID,
-          CATID: categorias[0].CATID,
-        }}>
-        {({ handleSubmit, handleChange, errors }) => (
-          <Form onSubmit={handleSubmit} onChange={handleChange}>
+        initialValues={ticket}>
+        {({ handleSubmit, handleChange, values, errors }) => (
+          <Form onSubmit={handleSubmit}>
             <Row>
               <Col sm='4'>
                 <Form.Label>Id:</Form.Label>
@@ -40,6 +42,8 @@ const CrearTicket = ({ handleSubmit, empleados, categorias, clientes }) => {
                   name='TIKID'
                   type='text'
                   placeholder='id'
+                  value={values.TIKID}
+                  onChange={handleChange}
                   isInvalid={errors.TIKID}
                 />
                 <Form.Control.Feedback type='invalid'>
@@ -50,7 +54,11 @@ const CrearTicket = ({ handleSubmit, empleados, categorias, clientes }) => {
               <Col sm='4'>
                 <Form.Group sm='6' controlId='medico-select'>
                   <Form.Label>Clientes:</Form.Label>
-                  <Form.Control as='select' name='CLIID'>
+                  <Form.Control
+                    as='select'
+                    name='CLIID'
+                    value={values.CLIID}
+                    onChange={handleChange}>
                     {clientes.map((cliente) => (
                       <option
                         key={cliente.CLIID}
@@ -66,7 +74,11 @@ const CrearTicket = ({ handleSubmit, empleados, categorias, clientes }) => {
               <Col sm='4'>
                 <Form.Group sm='6' controlId='medico-select'>
                   <Form.Label>Empleados:</Form.Label>
-                  <Form.Control as='select' name='EMPID'>
+                  <Form.Control
+                    as='select'
+                    name='EMPID'
+                    value={values.EMPID}
+                    onChange={handleChange}>
                     {empleados.map((empleado) => (
                       <option
                         key={empleado.EMPID}
@@ -81,7 +93,11 @@ const CrearTicket = ({ handleSubmit, empleados, categorias, clientes }) => {
               <Col sm='4'>
                 <Form.Group sm='6' controlId='categoria-select'>
                   <Form.Label>Categorías:</Form.Label>
-                  <Form.Control as='select' name='CATID'>
+                  <Form.Control
+                    as='select'
+                    name='CATID'
+                    value={values.CATID}
+                    onChange={handleChange}>
                     {categorias.map((categoria) => (
                       <option
                         key={categoria.CATID}
@@ -97,6 +113,8 @@ const CrearTicket = ({ handleSubmit, empleados, categorias, clientes }) => {
                 <Form.Control
                   name='TIKTITULO'
                   type='text'
+                  value={values.TIKTITULO}
+                  onChange={handleChange}
                   placeholder='Titulo del Ticket'
                   isInvalid={errors.TIKTITULO}
                 />
@@ -112,6 +130,8 @@ const CrearTicket = ({ handleSubmit, empleados, categorias, clientes }) => {
                   name='TIKDESCRIPCION'
                   type='text'
                   placeholder='Descripción de la orden'
+                  value={values.TIKDESCRIPCION}
+                  onChange={handleChange}
                   isInvalid={errors.TIKDESCRIPCION}
                 />
                 <Form.Control.Feedback type='invalid'>
@@ -120,7 +140,13 @@ const CrearTicket = ({ handleSubmit, empleados, categorias, clientes }) => {
               </Col>
               <Col sm='4'>
                 <Form.Label>Fecha:</Form.Label>
-                <Form.Control name='TIKFECHA' type='date' required />
+                <Form.Control
+                  name='TIKFECHA'
+                  type='date'
+                  value={values.TIKFECHA.split('T')[0]}
+                  onChange={handleChange}
+                  required
+                />
               </Col>
               <Col sm='4'>
                 <Form.Label>Estado:</Form.Label>
@@ -128,6 +154,8 @@ const CrearTicket = ({ handleSubmit, empleados, categorias, clientes }) => {
                   name='TIKESTADO'
                   type='text'
                   placeholder='Estado del Ticket'
+                  value={values.TIKESTADO}
+                  onChange={handleChange}
                   isInvalid={errors.TIKESTADO}
                 />
                 <Form.Control.Feedback type='invalid'>
@@ -150,4 +178,4 @@ const CrearTicket = ({ handleSubmit, empleados, categorias, clientes }) => {
   );
 };
 
-export default CrearTicket;
+export default EditarTicket;

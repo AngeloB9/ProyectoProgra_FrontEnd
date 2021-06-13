@@ -17,7 +17,6 @@ const index = () => {
         `${process.env.NEXT_PUBLIC_APIURL}/empleado`,
         values
       );
-
       setloading(false);
       router.push('/admin/empleados');
     } catch (error_peticion) {
